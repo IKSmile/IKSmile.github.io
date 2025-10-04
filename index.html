@@ -1,539 +1,850 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="./css/output.css" rel="stylesheet">
-    <link rel="stylesheet" href="./css/style.css">
+    <title>Isaac Kuakua - Portfolio</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.8rem;
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 100px 0;
+        }
+        
+        .profile-img {
+            border-radius: 50%;
+            border: 5px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .profile-img:hover {
+            transform: scale(1.05);
+        }
+        
+        .section-title {
+            position: relative;
+            margin-bottom: 3rem;
+            font-weight: 700;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background-color: var(--primary-color);
+        }
+        
+        .skill-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .progress {
+            height: 10px;
+            border-radius: 5px;
+        }
+        
+        .project-card {
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .project-img {
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .contact-section {
+            background-color: var(--light-color);
+        }
+        
+        .language-selector {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        
+        .dark-mode {
+            background-color: #1a1a2e;
+            color: #e6e6e6;
+        }
+        
+        .dark-mode .card {
+            background-color: #16213e;
+            color: #e6e6e6;
+        }
+        
+        .dark-mode .navbar {
+            background-color: #16213e !important;
+        }
+        
+        .dark-mode .hero-section {
+            background: linear-gradient(135deg, #0f3460, #1a1a2e);
+        }
+        
+        .dark-mode .contact-section {
+            background-color: #0f3460;
+        }
+        
+        .floating-btn {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 1000;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background-color: var(--primary-color);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -38px;
+            top: 5px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            border: 4px solid white;
+        }
+        
+        .dark-mode .timeline-item::before {
+            border-color: #16213e;
+        }
+    </style>
 </head>
+<body>
+    <!-- Language Selector -->
+    <div class="language-selector dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-translate"></i> Language
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="languageDropdown">
+            <li><a class="dropdown-item" href="#" data-lang="en">English</a></li>
+            <li><a class="dropdown-item" href="#" data-lang="es">Español</a></li>
+            <li><a class="dropdown-item" href="#" data-lang="fr">Français</a></li>
+        </ul>
+    </div>
+    
+    <!-- Dark Mode Toggle -->
+    <div class="floating-btn">
+        <button class="btn btn-dark rounded-circle p-3" id="darkModeToggle">
+            <i class="bi bi-moon"></i>
+        </button>
+    </div>
 
-<body class="bg-white dark:bg-gray-800">
-    <!-- Header -->
-    <header class="">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">ISAAC KUAKUA</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skills">Skills</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#experience">Experience</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-        <div class="px-8 mx-auto max-w-7xl bg-white dark:bg-gray-800">
-            <nav
-                class="   flex flex-wrap items-center justify-between w-fullnpy-4 md:py-0 px-4 bg-white dark:bg-gray-800 dark:text-white-700  ">
-
-                <div>
-                    <a href="#" class="dark:text-white">
-                        IS
-                    </a>
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="display-4 fw-bold mb-4" data-translate="hero_title">Hi, I'm Isaac Kuakua</h1>
+                    <p class="lead mb-4" data-translate="hero_subtitle">A Passionate Developer Specializing in Programming, Design and Cybersecurity</p>
+                    <p class="mb-5" data-translate="hero_description">As you reflect on the corridors of your educational voyage, envision the mosaic of experiences that have woven together to create the intricate fabric of your learning journey.</p>
+                    <div class="d-flex gap-3 flex-wrap">
+                        <a href="#projects" class="btn btn-light btn-lg" data-translate="view_work">View My Work</a>
+                        <a href="#contact" class="btn btn-outline-light btn-lg" data-translate="contact_me">Contact Me</a>
+                    </div>
                 </div>
-
-                <svg xmlns="http://www.w3.org/2000/svg" id="menu-button"
-                    class="h-6 w-6 cursor-pointer md:hidden block dark:text-white" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-
-                <div class="hidden w-full md:flex md:items-center md:w-auto" id="menu">
-                    <ul class="
-                      pt-4
-                      text-base text-gray-700 dark:text-white
-                      md:flex
-                      md:justify-between 
-                      md:pt-0">
-                        <li>
-                            <a class="md:p-4 py-2 block hover:text-blue-400  text-blue-600" href="index.html">Home</a>
-                        </li>
-
-                        <li>
-                            <a class="md:p-4 py-2 block hover:text-blue-400" href="#skills">Skills</a>
-                        </li>
-
-                        <li>
-                            <a class="md:p-4 py-2 block hover:text-blue-400" href="#about">About Me</a>
-                        </li>
-
-                        <li>
-                            <a class="md:p-4 py-2 block hover:text-blue-400 " href="#contact">Contact</a>
-                        </li>
-
-                        <li class=" ">
-
-                            <button id="theme-toggle" type="button"
-                                class="text-gray-500  dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 mt-2">
-                                <svg id="theme-toggle-dark-icon" class="w-5 h-5 hidden" fill="currentColor"
-                                    viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z">
-                                    </path>
-                                </svg>
-                                <svg id="theme-toggle-light-icon" class="w-5 h-5 hidden" fill="currentColor"
-                                    viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
-                                        fill-rule="evenodd" clip-rule="evenodd"></path>
-                                </svg>
-                            </button>
-                        </li>
-                    </ul>
+                <div class="col-lg-6 text-center mt-5 mt-lg-0">
+                    <img src="images/3.jpeg" alt="Isaac Kuakua" class="profile-img img-fluid" style="max-width: 400px;">
                 </div>
-            </nav>
+            </div>
+        </div>
+    </section>
 
-
-            <div class="bg-white dark:bg-gray-800 overflow-hidden relative lg:flex lg:items-center">
-                <div class="w-full py-12 px-4 sm:px-6 lg:py-16 lg:px-8 z-20">
-                    <h1 class="text-4xl md:text-6xl font-bold mb-4 text-gray-900 dark:text-white">Hi, I'm Isaac </h1>
-                    <p class="text-xl md:text-2xl mb-6 text-gray-900 dark:text-gray-400">A Passionate at Programming,
-                        Design and Cybersecurity</p>
-                    <p class="text-md mt-12 text-gray-400 animation">
-                        As you reflect on the corridors of your educational voyage, envision the mosaic of experiences
-                        that have woven together to create the intricate fabric of your learning journey. Each step, a
-                        brushstroke on the canvas of your intellectual landscape, contributing to the masterpiece of
-                        your personal and professional development.
-                    </p>
-                    <div class="lg:mt-0 lg:flex-shrink-0">
-                        <div class="mt-12 inline-flex rounded-md shadow">
-                            <div class="space-x-4">
-                                <a href="#projects"
-                                    class="bg-white text-blue-500 px-6 py-3 rounded shadow-md hover:bg-gray-200">View My
-                                    Work</a>
-                                <a href="#contact"
-                                    class="bg-blue-700 text-white px-6 py-3 rounded shadow-md hover:bg-blue-800">Contact
-                                    Me</a>
-                            </div>
+    <!-- About Section -->
+    <section id="about" class="py-5">
+        <div class="container">
+            <h2 class="section-title" data-translate="about_title">About Me</h2>
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="card h-100 shadow">
+                        <img src="images/1.jpg" class="card-img-top" alt="About Isaac">
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="card shadow h-100">
+                        <div class="card-body">
+                            <h3 class="card-title mb-4" data-translate="who_is_isaac">Who is ISAAC KUAKUA?</h3>
+                            <p class="card-text mb-4" data-translate="about_description_1">Hey there! 👋 I'm ISAAC KUAKUA, a final-year Information Technology rockstar with an insatiable appetite for coding and electronics. 🌐 After conquering the realm of industrial informatics and network wizardry for three glorious years, I took my talents to the captivating island of Cyprus, where I'm currently basking in the glory of my fourth year in the IT universe.</p>
+                            
+                            <h4 class="mb-3" data-translate="why_it">Why IT field?</h4>
+                            <p class="card-text mb-4" data-translate="about_description_2">Technology is constantly evolving, and IT professionals often need to engage in continuous learning to stay relevant. If you enjoy learning and adapting to new technologies, just follow me and join us in IT or all other technological fields.</p>
+                            
+                            <h4 class="mb-3" data-translate="why_iot_cyber">Why IoT and Cyber Security?</h4>
+                            <p class="card-text" data-translate="about_description_3">Mainly it was because of IoT and after this semester I got evolve and start enjoying cyber security. Now all I can say is none is safe so let's secure our assets.</p>
                         </div>
                     </div>
                 </div>
-                <div class="flex items-center gap-8 p-8 lg:p-24 " style="max-width: 600px; ">
-
-
-
-
-                    <div>
-                        <img src="images/3.jpeg" class=" transition duration-200 ease-in-out rounded-lg hover:rotate-12"
-                            alt="Tree" />
+            </div>
+            
+            <!-- Education & Experience Timeline -->
+            <div class="row mt-5">
+                <div class="col-12">
+                    <h3 class="mb-4" data-translate="education_experience">Education & Experience</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <h5 data-translate="current_education">Current: Final Year IT Student</h5>
+                            <p class="text-muted" data-translate="cyprus_location">Cyprus · 2023-Present</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h5 data-translate="previous_education">Industrial Informatics & Networking</h5>
+                            <p class="text-muted" data-translate="previous_duration">3 Years</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h5 data-translate="iot_specialization">IoT & Cybersecurity Specialization</h5>
+                            <p class="text-muted" data-translate="current_focus">Current Focus</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </header>
-    </header>
-    <main>
+    </section>
 
-
-        <!-- About Section -->
-        <section id="about" class="py-16 bg-white dark:bg-gray-600">
-            <div class="px-4 py-12  text-gray-500 dark:text-gray-200">
-                <div class="flex flex-col max-w-6xl mx-auto md:flex-row">
-
-                    <div class="w-full mr-8 text-3xl font-extrabold leading-9 md:w-1/3 ">
-                        <div class=" p-2 hover:border-2 hover:border-blue-400  rounded-lg ">
-                            <img src="images/1.jpg" class=" rounded-lg " alt="Tree" />
+    <!-- Skills Section -->
+    <section id="skills" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title text-center" data-translate="skills_title">Skills</h2>
+            <p class="text-center mb-5" data-translate="skills_subtitle">Here are my technical and professional skills</p>
+            
+            <div class="row g-4">
+                <!-- Programming Languages -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="skill-card card h-100 shadow">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="bi bi-code-slash text-primary fs-2 me-3"></i>
+                                <h5 class="card-title mb-0" data-translate="programming_languages">Programming</h5>
+                            </div>
+                            <ul class="list-unstyled">
+                                <li class="mb-2">
+                                    <div class="d-flex justify-content-between">
+                                        <span>JavaScript</span>
+                                        <span>75%</span>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: 75%"></div>
+                                    </div>
+                                </li>
+                                <li class="mb-2">
+                                    <div class="d-flex justify-content-between">
+                                        <span>Python</span>
+                                        <span>75%</span>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: 75%"></div>
+                                    </div>
+                                </li>
+                                <li class="mb-2">
+                                    <div class="d-flex justify-content-between">
+                                        <span>Java</span>
+                                        <span>75%</span>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: 75%"></div>
+                                    </div>
+                                </li>
+                                <li class="mb-2">
+                                    <div class="d-flex justify-content-between">
+                                        <span>C/C++</span>
+                                        <span>75%</span>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: 75%"></div>
+                                    </div>
+                                </li>
+                                <li class="mb-2">
+                                    <div class="d-flex justify-content-between">
+                                        <span>Swift</span>
+                                        <span>86%</span>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: 86%"></div>
+                                    </div>
+                                </li>
+                            </ul>
                         </div>
-
-
                     </div>
-                    <dl class="w-full md:w-2/3 mt-8">
-                        <dt class="mb-4">
-                            <h3 class="text-xl font-semibold text-black dark:text-white">
-                                Who is ISAAC KUAKUA?
-                            </h3>
-                        </dt>
-                        <dd class="mb-16 animation">
-                            <p>
-                                Hey there! 👋 I'm ISAAC KUAKUA, a final-year Information Technology rockstar with an
-                                insatiable appetite for coding and electronics. 🌐 After conquering the realm of
-                                industrial
-                                informatics and network wizardry for three glorious years, I took my talents to the
-                                captivating island of Cyprus, where I'm currently basking in the glory of my fourth year
-                                in
-                                the IT universe.
-                            </p>
-                        </dd>
-                        <dt class="mb-4">
-                            <h3 class="text-xl font-semibold">
-                                Why IT field?
-                            </h3>
-                        </dt>
-                        <dd class="mb-16  animation">
-                            <p>Technology is constantly evolving, and IT professionals often need to engage in
-                                continuous
-                                learning to stay relevant. If you enjoy learning and adapting to new technologies, just
-                                follow me and join us in IT or all other technological fields.
-                            </p>
-                        </dd>
-                        <dt class="mb-4">
-                            <h3 class="text-xl font-semibold">
-                                why Iot and Cyber Security?
-                            </h3>
-                        </dt>
-                        <dd class="mb-16  animation">
-                            <p>
-                                Mainly it was beceause of Iot and after this semester I got evole and start enjoying
-                                cyber
-                                security. Now all i can say is none is save so let's secure our assets.
-                            </p>
-                        </dd>
-                    </dl>
+                </div>
+                
+                <!-- Web Development -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="skill-card card h-100 shadow">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="bi bi-globe text-primary fs-2 me-3"></i>
+                                <h5 class="card-title mb-0" data-translate="web_development">Web Development</h5>
+                            </div>
+                            <ul class="list-unstyled">
+                                <li class="mb-2">
+                                    <div class="d-flex justify-content-between">
+                                        <span>HTML/CSS</span>
+                                        <span>90%</span>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: 90%"></div>
+                                    </div>
+                                </li>
+                                <li class="mb-2">
+                                    <div class="d-flex justify-content-between">
+                                        <span>PHP</span>
+                                        <span>70%</span>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: 70%"></div>
+                                    </div>
+                                </li>
+                                <li class="mb-2">
+                                    <div class="d-flex justify-content-between">
+                                        <span>MySQL</span>
+                                        <span>95%</span>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: 95%"></div>
+                                    </div>
+                                </li>
+                                <li class="mb-2">
+                                    <div class="d-flex justify-content-between">
+                                        <span>MongoDB</span>
+                                        <span>75%</span>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: 75%"></div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Design & Multimedia -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="skill-card card h-100 shadow">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="bi bi-palette text-primary fs-2 me-3"></i>
+                                <h5 class="card-title mb-0" data-translate="design_multimedia">Design & Multimedia</h5>
+                            </div>
+                            <ul class="list-unstyled">
+                                <li class="mb-2">
+                                    <div class="d-flex justify-content-between">
+                                        <span>UI/UX Design</span>
+                                        <span>80%</span>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: 80%"></div>
+                                    </div>
+                                </li>
+                                <li class="mb-2">
+                                    <div class="d-flex justify-content-between">
+                                        <span>Adobe Photoshop</span>
+                                        <span>65%</span>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: 65%"></div>
+                                    </div>
+                                </li>
+                                <li class="mb-2">
+                                    <div class="d-flex justify-content-between">
+                                        <span>Adobe Premiere Pro</span>
+                                        <span>65%</span>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: 65%"></div>
+                                    </div>
+                                </li>
+                                <li class="mb-2">
+                                    <div class="d-flex justify-content-between">
+                                        <span>Adobe Lightroom</span>
+                                        <span>55%</span>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: 55%"></div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Other Skills -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="skill-card card h-100 shadow">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="bi bi-tools text-primary fs-2 me-3"></i>
+                                <h5 class="card-title mb-0" data-translate="other_skills">Other Skills</h5>
+                            </div>
+                            <ul class="list-unstyled">
+                                <li class="mb-2">
+                                    <div class="d-flex justify-content-between">
+                                        <span>IoT Development</span>
+                                        <span>70%</span>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: 70%"></div>
+                                    </div>
+                                </li>
+                                <li class="mb-2">
+                                    <div class="d-flex justify-content-between">
+                                        <span>Cybersecurity</span>
+                                        <span>75%</span>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: 75%"></div>
+                                    </div>
+                                </li>
+                                <li class="mb-2">
+                                    <div class="d-flex justify-content-between">
+                                        <span>Arduino</span>
+                                        <span>55%</span>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: 55%"></div>
+                                    </div>
+                                </li>
+                                <li class="mb-2">
+                                    <div class="d-flex justify-content-between">
+                                        <span>Microsoft Office</span>
+                                        <span>85%</span>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: 85%"></div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Projects Section -->
-        <section id="projects" class="py-16 bg-white dark:bg-gray-800">
-            <div class="">
-                <h2 class="text-3xl font-bold text-center mb-8  dark:text-white">My Projects</h2>
-                <div
-                    class="relative max-w-screen-xl p-4 px-4 mx-auto bg-white dark:bg-gray-800 sm:px-6 lg:px-8 py-26 lg:mt-20">
-                    <div class="relative">
-                        <div class="lg:grid lg:grid-flow-row-dense lg:grid-cols-2 lg:gap-8 lg:items-center">
-                            <div class="relative mt-10 lg:-mx-4 relative-20 lg:mt-0 lg:col-start-1">
-                                <div class="relative space-y-4">
-                                    <div class="flex items-end justify-center space-x-4 lg:justify-start">
-                                        <a class="md:p-4 py-2 block hover:text-blue-400" href="pages/security.html"><img
-                                                class="w-32 rounded-lg shadow-lg md:w-56" width="260"
-                                                src="images/cybersecurity.png" alt="1" /></a>
-                                        <a class="md:p-4 py-2 block hover:text-blue-400" href="pages/iot.html"> <img
-                                                class="w-40 rounded-lg shadow-lg md:w-64" width="200"
-                                                src="images/iot.jpeg" alt="2" /> </a>
-                                    </div>
-
-                                    <div class="flex items-start justify-center ml-12 space-x-4 lg:justify-start">
-                                        <img class="w-32 rounded-lg shadow-lg md:w-56" width="260" height="200px"
-                                            src="images/graphic-designing.webp" alt="4" />
-                                        <img class="w-40 rounded-lg shadow-lg md:w-64" width="200" src="images/ui.png"
-                                            alt="3" />
-
-                                    </div>
+    <!-- Projects Section -->
+    <section id="projects" class="py-5">
+        <div class="container">
+            <h2 class="section-title text-center" data-translate="projects_title">My Projects</h2>
+            <p class="text-center mb-5" data-translate="projects_subtitle">Check out some of my recent work</p>
+            
+            <div class="row g-4">
+                <!-- Project 1 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="project-card card h-100 shadow">
+                        <img src="images/cybersecurity.png" class="card-img-top project-img" alt="Cybersecurity Project">
+                        <div class="card-body">
+                            <h5 class="card-title" data-translate="cybersecurity_project">Cybersecurity Solutions</h5>
+                            <p class="card-text" data-translate="cybersecurity_description">Developed comprehensive security protocols and vulnerability assessments for network systems.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <a href="pages/security.html" class="btn btn-primary btn-sm" data-translate="view_project">View Project</a>
+                                <div class="text-muted">
+                                    <i class="bi bi-calendar me-1"></i>
+                                    <small>2023</small>
                                 </div>
                             </div>
-                            <div class="ml-auto lg:col-start-2 lg:max-w-2xl">
-
-                                <h4
-                                    class="mt-2 text-2xl font-extrabold leading-8 text-gray-900 dark:text-white sm:text-3xl sm:leading-9">
-                                    Internet of things
-                                </h4>
-                                <p class="mt-4 text-lg leading-6 text-gray-500 dark:text-gray-300 animation">
-                                    The Internet of Things (IoT) refers to the interconnected network of physical
-                                    devices
-                                    that
-                                    communicate and exchange data with each other through the internet. While IoT brings
-                                    numerous
-                                    benefits, such as increased efficiency, automation, and improved data analytics, it
-                                    also
-                                    introduces significant cybersecurity challenges.
-                                </p>
-                                <h4
-                                    class="mt-2 text-2xl font-extrabold leading-8 text-gray-900 dark:text-white sm:text-3xl sm:leading-9">
-                                    Cyber Security
-                                </h4>
-                                <p class="mt-4 text-lg leading-6 text-gray-500 dark:text-gray-300 animation">
-                                    Cybersecurity, or computer security, involves the practice of protecting systems,
-                                    networks, and
-                                    programs from digital attacks, damage, or unauthorized access. As technology becomes
-                                    increasingly integral to our daily lives and business operations, the importance of
-                                    cybersecurity continues to grow.
-                                </p>
-                                <h4
-                                    class="mt-2 text-2xl font-extrabold leading-8 text-gray-900 dark:text-white sm:text-3xl sm:leading-9">
-                                    User Interface/User Experience
-                                </h4>
-                                <p class="mt-4 text-lg leading-6 text-gray-500 dark:text-gray-300 animation">
-                                    UI (User Interface):
-                                    The visual elements users interact with, such as buttons, menus, icons, and layouts.
-                                    Goal: Ensure the interface is aesthetically pleasing, consistent, and easy to
-                                    navigate.
-
-                                    UX (User Experience):
-                                    The overall experience users have while interacting with a product or system.
-                                    Goal: Make the experience seamless, efficient, and enjoyable by addressing
-                                    usability,
-                                    accessibility, and functionality.
-                                </p>
-                                <h4
-                                    class="mt-2 text-2xl font-extrabold leading-8 text-gray-900 dark:text-white sm:text-3xl sm:leading-9">
-                                    Graphic Design
-                                </h4>
-                                <p class="mt-4 text-lg leading-6 text-gray-500 dark:text-gray-300 animation">
-                                    Graphic Design: is the art and practice of creating visual content to communicate
-                                    ideas,
-                                    messages, or information effectively.</p>
-
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="project-card card h-100 shadow">
+                        <img src="images/iot.jpeg" class="card-img-top project-img" alt="IoT Project">
+                        <div class="card-body">
+                            <h5 class="card-title" data-translate="iot_project">IoT Smart Home System</h5>
+                            <p class="card-text" data-translate="iot_description">Designed and implemented a connected home automation system using Arduino and sensors.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <a href="pages/iot.html" class="btn btn-primary btn-sm" data-translate="view_project">View Project</a>
+                                <div class="text-muted">
+                                    <i class="bi bi-calendar me-1"></i>
+                                    <small>2023</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="project-card card h-100 shadow">
+                        <img src="images/ui.png" class="card-img-top project-img" alt="UI/UX Project">
+                        <div class="card-body">
+                            <h5 class="card-title" data-translate="ui_project">UI/UX Design Portfolio</h5>
+                            <p class="card-text" data-translate="ui_description">Created intuitive user interfaces and experiences for various web and mobile applications.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <a href="#" class="btn btn-primary btn-sm" data-translate="view_project">View Project</a>
+                                <div class="text-muted">
+                                    <i class="bi bi-calendar me-1"></i>
+                                    <small>2022</small>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Skills Section -->
-        <section id="skills" class="py-16 bg-blue-400  dark:bg-gray-600 text-gray-900 dark:text-white">
-            <div class="container max-w-screen-xl mx-auto px-6 text-center">
-                <h2 class="text-3xl font-bold mb-8  text-white ">Skills</h2>
-
-                <!-- Skill Card -->
-                <div class=" grid grid-cols-1 gap-2 sd:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-                    <!-- Skill Item -->
-                    <div class=" w-64 bg-white dark:bg-gray-800 p-4 shadow-lg rounded-lg max-w-xs">
-                        <!-- Skill Header -->
-                        <div class="flex items-center mb-4">
-                            <img src="images/javascript-seeklogo.com.svg" alt="JavaScript Logo" class="h-12 w-12 mr-4">
-                            <span class="text-lg font-semibold text-gray-900 dark:text-white">JavaScript</span>
+    <!-- Contact Section -->
+    <section id="contact" class="py-5 contact-section">
+        <div class="container">
+            <h2 class="section-title text-center" data-translate="contact_title">Contact Me</h2>
+            <p class="text-center mb-5" data-translate="contact_subtitle">Let's work together on your next project</p>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <form class="row g-3">
+                        <div class="col-md-6">
+                            <label for="name" class="form-label" data-translate="name_label">Your Name</label>
+                            <input type="text" class="form-control" id="name" required>
                         </div>
-                        <!-- Progress Bar -->
-                        <div class="w-full bg-gray-200 rounded-full h-3">
-                            <div class="bg-blue-500 h-3 rounded-full" style="width: 75%;"></div>
+                        <div class="col-md-6">
+                            <label for="email" class="form-label" data-translate="email_label">Your Email</label>
+                            <input type="email" class="form-control" id="email" required>
                         </div>
-                        <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">75% Proficiency</p>
-                    </div>
-                    <!-- Skill Item -->
-                    <div class="  w-64 bg-white dark:bg-gray-800 p-4 shadow-lg rounded-lg max-w-xs">
-                        <div class="flex items-center mb-4">
-                            <img src="images/1175208.webp" alt="Skill" class="h-12 w-12 mr-4">
-                            <span class="text-lg font-semibold text-gray-900 dark:text-white">HTML</span>
+                        <div class="col-12">
+                            <label for="subject" class="form-label" data-translate="subject_label">Subject</label>
+                            <input type="text" class="form-control" id="subject" required>
                         </div>
-                        <div class="w-full bg-gray-200 rounded-full h-3">
-                            <div class="bg-blue-500 h-3 rounded-full" style="width: 90%;"></div>
+                        <div class="col-12">
+                            <label for="message" class="form-label" data-translate="message_label">Your Message</label>
+                            <textarea class="form-control" id="message" rows="5" required></textarea>
                         </div>
-                        <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">90% Proficiency</p>
-                    </div>
-                    <!-- Skill Item -->
-                    <div class="w-64 bg-white dark:bg-gray-800 p-4 shadow-lg rounded-lg max-w-xs">
-                        <div class="flex items-center mb-4">
-                            <img src="images/css-3.svg" alt="Skill" class="h-12 w-12 mr-4">
-                            <span class="text-lg font-semibold text-gray-900 dark:text-white">CSS</span>
+                        <div class="col-12 text-center">
+                            <button type="submit" class="btn btn-primary btn-lg" data-translate="send_message">Send Message</button>
                         </div>
-                        <div class="w-full bg-gray-200 rounded-full h-3">
-                            <div class="bg-blue-500 h-3 rounded-full" style="width: 80%;"></div>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Contact Info -->
+            <div class="row mt-5">
+                <div class="col-md-4 text-center mb-4">
+                    <div class="card border-0 bg-transparent">
+                        <div class="card-body">
+                            <i class="bi bi-envelope fs-1 text-primary mb-3"></i>
+                            <h5 data-translate="email_contact">Email</h5>
+                            <p>isaac@example.com</p>
                         </div>
-                        <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">80% Proficiency</p>
-                    </div>
-                    <!-- Skill Item -->
-                    <div class=" w-64 bg-white dark:bg-gray-800 p-4 shadow-lg rounded-lg max-w-xs">
-                        <div class="flex items-center mb-4">
-                            <img src="images/php_PNG49.png" alt="Skill" class="h-12 w-12 mr-4">
-                            <span class="text-lg font-semibold text-gray-900 dark:text-white">PHP</span>
-                        </div>
-                        <div class="w-full bg-gray-200 rounded-full h-3">
-                            <div class="bg-blue-500 h-3 rounded-full" style="width: 70%;"></div>
-                        </div>
-                        <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">70% Proficiency</p>
-                    </div>
-                    <!-- Skill Item -->
-                    <div class=" w-64 bg-white dark:bg-gray-800 p-4 shadow-lg rounded-lg max-w-xs">
-                        <div class="flex items-center mb-4">
-                            <img src="images/Dart_programming_language_logo_icon.svg.png" alt="Skill"
-                                class="h-12 w-12 mr-4">
-                            <span class="text-lg font-semibold text-gray-900 dark:text-white">Dart</span>
-                        </div>
-                        <div class="w-full bg-gray-200 rounded-full h-3">
-                            <div class="bg-green-500 h-3 rounded-full" style="width: 80%;"></div>
-                        </div>
-                        <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">80% Proficiency</p>
-                    </div>
-                    <!-- Skill Item -->
-                    <div class="w-64 bg-white dark:bg-gray-800 p-4 shadow-lg rounded-lg max-w-xs">
-                        <div class="flex items-center mb-4">
-                            <img src="images/swift.png" alt="Skill" class="h-12 w-12 mr-4">
-                            <span class="text-lg font-semibold text-gray-900 dark:text-white">SWIFT</span>
-                        </div>
-                        <div class="w-full bg-gray-200 rounded-full h-3">
-                            <div class="bg-green-500 h-3 rounded-full" style="width: 86%;"></div>
-                        </div>
-                        <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">86% Proficiency</p>
-                    </div>
-                    <!-- Skill Item -->
-                    <div class="w-64 bg-white dark:bg-gray-800 p-4 shadow-lg rounded-lg max-w-xs">
-                        <div class="flex items-center mb-4">
-                            <img src="images/mysql.png" alt="Skill" class="h-12 w-12 mr-4">
-                            <span class="text-lg font-semibold text-gray-900 dark:text-white">MYSQL</span>
-                        </div>
-                        <div class="w-full bg-gray-200 rounded-full h-3">
-                            <div class="bg-yellow-500 h-3 rounded-full" style="width: 95%;"></div>
-                        </div>
-                        <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">95% Proficiency</p>
-                    </div>
-
-
-
-                    <!-- Skill Item -->
-                    <div class="w-64 bg-white dark:bg-gray-800 p-4 shadow-lg rounded-lg max-w-xs">
-                        <div class="flex items-center mb-4">
-                            <img src="images/mongo.png" alt="Skill" class="h-12 w-12 mr-4">
-                            <span class="text-lg font-semibold text-gray-900 dark:text-white">MONGO DB</span>
-                        </div>
-                        <div class="w-full bg-gray-200 rounded-full h-3">
-                            <div class="bg-yellow-500 h-3 rounded-full" style="width: 75%;"></div>
-                        </div>
-                        <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">75% Proficiency</p>
-                    </div>
-
-                    <!-- Skill Item -->
-                    <div class="w-64 bg-white dark:bg-gray-800 p-4 shadow-lg rounded-lg max-w-xs">
-                        <div class="flex items-center mb-4">
-                            <img src="images/java.png" alt="Skill" class="h-12 w-12 mr-4">
-                            <span class="text-lg font-semibold text-gray-900 dark:text-white">JAVA</span>
-                        </div>
-                        <div class="w-full bg-gray-200 rounded-full h-3">
-                            <div class="bg-red-500 h-3 rounded-full" style="width: 75%;"></div>
-                        </div>
-                        <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">75% Proficiency</p>
-                    </div>
-                    <!-- Skill Item -->
-                    <div class="w-64 bg-white dark:bg-gray-800 p-4 shadow-lg rounded-lg max-w-xs">
-                        <div class="flex items-center mb-4">
-                            <img src="images/C_Programming_Language.svg.png" alt="Skill" class="h-12 w-12 mr-4">
-                            <span class="text-lg font-semibold text-gray-900 dark:text-white">C PROGRMMING</span>
-                        </div>
-                        <div class="w-full bg-gray-200 rounded-full h-3">
-                            <div class="bg-red-500 h-3 rounded-full" style="width: 75%;"></div>
-                        </div>
-                        <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">75% Proficiency</p>
-                    </div>
-                    <!-- Skill Item -->
-                    <div class="w-64 bg-white dark:bg-gray-800 p-4 shadow-lg rounded-lg max-w-xs">
-                        <div class="flex items-center mb-4">
-                            <img src="images/cpp_logo.png" alt="Skill" class="h-12 w-12 mr-4">
-                            <span class="text-lg font-semibold text-gray-900 dark:text-white">C++</span>
-                        </div>
-                        <div class="w-full bg-gray-200 rounded-full h-3">
-                            <div class="bg-red-500 h-3 rounded-full" style="width: 75%;"></div>
-                        </div>
-                        <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">75% Proficiency</p>
-                    </div>
-                    <!-- Skill Item -->
-                    <div class="w-64 bg-white dark:bg-gray-800 p-4 shadow-lg rounded-lg max-w-xs">
-                        <div class="flex items-center mb-4">
-                            <img src="images/Logo_C_sharp.svg.png" alt="C Logo" class="h-12 w-12 mr-4">
-                            <span class="text-lg font-semibold text-gray-900 dark:text-white">C#</span>
-                        </div>
-                        <div class="w-full bg-gray-200 rounded-full h-3">
-                            <div class="bg-red-500 h-3 rounded-full" style="width: 65%;"></div>
-                        </div>
-                        <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">65% Proficiency</p>
-                    </div>
-                    <!-- Skill Item -->
-                    <div class="w-64 bg-white dark:bg-gray-800 p-4 shadow-lg rounded-lg max-w-xs">
-                        <div class="flex items-center mb-4">
-                            <img src="images/Python-logo-notext.svg.png" alt="Skill" class="h-12 w-12 mr-4">
-                            <span class="text-lg font-semibold text-gray-900 dark:text-white">PYTHON</span>
-                        </div>
-                        <div class="w-full bg-gray-200 rounded-full h-3">
-                            <div class="bg-red-500 h-3 rounded-full" style="width: 75%;"></div>
-                        </div>
-                        <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">75% Proficiency</p>
-                    </div>
-                    <!-- Skill Item -->
-                    <div class="w-64 bg-white dark:bg-gray-800 p-4 shadow-lg rounded-lg max-w-xs">
-                        <div class="flex items-center mb-4">
-                            <img src="images/Arduino_IDE_logo.svg.png" alt="Skill" class="h-12 w-12 mr-4">
-                            <span class="text-lg font-semibold text-gray-900 dark:text-white">ARDUINO</span>
-                        </div>
-                        <div class="w-full bg-gray-200 rounded-full h-3">
-                            <div class="bg-red-500 h-3 rounded-full" style="width: 55%;"></div>
-                        </div>
-                        <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">55% Proficiency</p>
-                    </div>
-
-                    <div class="w-64 bg-white dark:bg-gray-800 p-4 shadow-lg rounded-lg max-w-xs">
-                        <div class="flex items-center mb-4">
-                            <img src="images/photoshop.png" alt="Skill" class="h-12 w-12 mr-4">
-                            <span class="text-lg font-semibold text-gray-900 dark:text-white">ADOBE PHOTOSHOP</span>
-                        </div>
-                        <div class="w-full bg-gray-200 rounded-full h-3">
-                            <div class="bg-teal-500 h-3 rounded-full" style="width: 65%;"></div>
-                        </div>
-                        <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">65% Proficiency</p>
-                    </div>
-                    <div class="w-64 bg-white dark:bg-gray-800 p-4 shadow-lg rounded-lg max-w-xs">
-                        <div class="flex items-center mb-4">
-                            <img src="images/premierpro.png" alt="Skill" class="h-12 w-12 mr-4">
-                            <span class="text-lg font-semibold text-gray-900 dark:text-white">ADOBE PREMIERE PRO</span>
-                        </div>
-                        <div class="w-full bg-gray-200 rounded-full h-3">
-                            <div class="bg-teal-500 h-3 rounded-full" style="width: 65%;"></div>
-                        </div>
-                        <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">65% Proficiency</p>
-                    </div>
-                    <div class="w-64 bg-white dark:bg-gray-800 p-4 shadow-lg rounded-lg max-w-xs">
-                        <div class="flex items-center mb-4">
-                            <img src="images/lr.png" alt="Skill" class="h-12 w-12 mr-4">
-                            <span class="text-lg font-semibold text-gray-900 dark:text-white">ADOBE LIGHTROOM</span>
-                        </div>
-                        <div class="w-full bg-gray-200 rounded-full h-3">
-                            <div class="bg-teal-500 h-3 rounded-full" style="width: 55%;"></div>
-                        </div>
-                        <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">55% Proficiency</p>
-                    </div>
-                    <div class="w-64 bg-white dark:bg-gray-800 p-4 shadow-lg rounded-lg max-w-xs">
-                        <div class="flex items-center mb-4">
-                            <img src="images/audition.png" alt="Skill" class="h-12 w-12 mr-4">
-                            <span class="text-lg font-semibold text-gray-900 dark:text-white">ADOBE AUDITION</span>
-                        </div>
-                        <div class="w-full bg-gray-200 rounded-full h-3">
-                            <div class="bg-teal-500 h-3 rounded-full" style="width: 55%;"></div>
-                        </div>
-                        <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">55% Proficiency</p>
-                    </div>
-
-                    <div class="w-64 bg-white dark:bg-gray-800 p-4 shadow-lg rounded-lg max-w-xs">
-                        <div class="flex items-center mb-4">
-                            <img src="images/word.png" alt="Skill" class="h-12 w-12 mr-4">
-                            <span class="text-lg font-semibold text-gray-900 dark:text-white">MICROSOFT WORD</span>
-                        </div>
-                        <div class="w-full bg-gray-200 rounded-full h-3">
-                            <div class="bg-purple-500 h-3 rounded-full" style="width: 55%;"></div>
-                        </div>
-                        <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">55% Proficiency</p>
-                    </div>
-                    <div class="w-64 bg-white dark:bg-gray-800 p-4 shadow-lg rounded-lg max-w-xs">
-                        <div class="flex items-center mb-4">
-                            <img src="images/powerpoint.png" alt="Skill" class="h-12 w-12 mr-4">
-                            <span class="text-lg font-semibold text-gray-900 dark:text-white">MICROSOFT POWERPOINT</span>
-                        </div>
-                        <div class="w-full bg-gray-200 rounded-full h-3">
-                            <div class="bg-purple-500 h-3 rounded-full" style="width: 55%;"></div>
-                        </div>
-                        <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">55% Proficiency</p>
-                    </div>
-                    <div class="w-64 bg-white dark:bg-gray-800 p-4 shadow-lg rounded-lg max-w-xs">
-                        <div class="flex items-center mb-4">
-                            <img src="images/excell.png" alt="Skill" class="h-12 w-12 mr-4">
-                            <span class="text-lg font-semibold text-gray-900 dark:text-white">MICROSOFT EXCEl</span>
-                        </div>
-                        <div class="w-full bg-gray-200 rounded-full h-3">
-                            <div class="bg-purple-500 h-3 rounded-full" style="width: 55%;"></div>
-                        </div>
-                        <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">55% Proficiency</p>
                     </div>
                 </div>
-
+                <div class="col-md-4 text-center mb-4">
+                    <div class="card border-0 bg-transparent">
+                        <div class="card-body">
+                            <i class="bi bi-telephone fs-1 text-primary mb-3"></i>
+                            <h5 data-translate="phone_contact">Phone</h5>
+                            <p>+123 456 7890</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 text-center mb-4">
+                    <div class="card border-0 bg-transparent">
+                        <div class="card-body">
+                            <i class="bi bi-geo-alt fs-1 text-primary mb-3"></i>
+                            <h5 data-translate="location_contact">Location</h5>
+                            <p data-translate="cyprus_location_full">Cyprus</p>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </div>
+    </section>
 
-
-
-
-
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="py-16 bg-white dark:bg-gray-800">
-            <div class="container mx-auto px-6 text-center">
-                <h2 class="text-3xl font-bold mb-8 text-gray-900 dark:text-white">Contact Me</h2>
-                <form class="max-w-lg mx-auto space-y-4">
-                    <input type="text" placeholder="Your Name" class="w-full px-4 py-3 border rounded-lg">
-                    <input type="email" placeholder="Your Email" class="w-full px-4 py-3 border rounded-lg">
-                    <textarea placeholder="Your Message" rows="4" class="w-full px-4 py-3 border rounded-lg"></textarea>
-                    <button type="submit"
-                        class="w-full bg-blue-500 text-white px-4 py-3 rounded-lg hover:bg-blue-600">Send
-                        Message</button>
-                </form>
-            </div>
-        </section>
-    </main>
     <!-- Footer -->
-    <footer class="bg-gray-800 text-gray-400 text-center py-4">
-        © 2024 ISAAC KUAKUA – All Rights Reserved.
+    <footer class="bg-dark text-light py-4">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0" data-translate="copyright">© 2024 ISAAC KUAKUA – All Rights Reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <div class="social-links">
+                        <a href="#" class="text-light me-3"><i class="bi bi-linkedin"></i></a>
+                        <a href="#" class="text-light me-3"><i class="bi bi-github"></i></a>
+                        <a href="#" class="text-light me-3"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="text-light"><i class="bi bi-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </footer>
 
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script>
+        // Dark Mode Toggle
+        document.getElementById('darkModeToggle').addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+            const icon = this.querySelector('i');
+            if (document.body.classList.contains('dark-mode')) {
+                icon.classList.remove('bi-moon');
+                icon.classList.add('bi-sun');
+            } else {
+                icon.classList.remove('bi-sun');
+                icon.classList.add('bi-moon');
+            }
+        });
 
-    <script src="../path/to/flowbite/dist/flowbite.bundle.js"></script>
-    <script src="js/main.js"></script>
-    <script type="text/javascript"
-        src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+        // Language Translation
+        const translations = {
+            en: {
+                hero_title: "Hi, I'm Isaac Kuakua",
+                hero_subtitle: "A Passionate Developer Specializing in Programming, Design and Cybersecurity",
+                hero_description: "As you reflect on the corridors of your educational voyage, envision the mosaic of experiences that have woven together to create the intricate fabric of your learning journey.",
+                view_work: "View My Work",
+                contact_me: "Contact Me",
+                about_title: "About Me",
+                who_is_isaac: "Who is ISAAC KUAKUA?",
+                about_description_1: "Hey there! 👋 I'm ISAAC KUAKUA, a final-year Information Technology rockstar with an insatiable appetite for coding and electronics. 🌐 After conquering the realm of industrial informatics and network wizardry for three glorious years, I took my talents to the captivating island of Cyprus, where I'm currently basking in the glory of my fourth year in the IT universe.",
+                why_it: "Why IT field?",
+                about_description_2: "Technology is constantly evolving, and IT professionals often need to engage in continuous learning to stay relevant. If you enjoy learning and adapting to new technologies, just follow me and join us in IT or all other technological fields.",
+                why_iot_cyber: "Why IoT and Cyber Security?",
+                about_description_3: "Mainly it was because of IoT and after this semester I got evolve and start enjoying cyber security. Now all I can say is none is safe so let's secure our assets.",
+                education_experience: "Education & Experience",
+                current_education: "Current: Final Year IT Student",
+                cyprus_location: "Cyprus · 2023-Present",
+                previous_education: "Industrial Informatics & Networking",
+                previous_duration: "3 Years",
+                iot_specialization: "IoT & Cybersecurity Specialization",
+                current_focus: "Current Focus",
+                skills_title: "Skills",
+                skills_subtitle: "Here are my technical and professional skills",
+                programming_languages: "Programming",
+                web_development: "Web Development",
+                design_multimedia: "Design & Multimedia",
+                other_skills: "Other Skills",
+                projects_title: "My Projects",
+                projects_subtitle: "Check out some of my recent work",
+                cybersecurity_project: "Cybersecurity Solutions",
+                cybersecurity_description: "Developed comprehensive security protocols and vulnerability assessments for network systems.",
+                iot_project: "IoT Smart Home System",
+                iot_description: "Designed and implemented a connected home automation system using Arduino and sensors.",
+                ui_project: "UI/UX Design Portfolio",
+                ui_description: "Created intuitive user interfaces and experiences for various web and mobile applications.",
+                view_project: "View Project",
+                contact_title: "Contact Me",
+                contact_subtitle: "Let's work together on your next project",
+                name_label: "Your Name",
+                email_label: "Your Email",
+                subject_label: "Subject",
+                message_label: "Your Message",
+                send_message: "Send Message",
+                email_contact: "Email",
+                phone_contact: "Phone",
+                location_contact: "Location",
+                cyprus_location_full: "Cyprus",
+                copyright: "© 2024 ISAAC KUAKUA – All Rights Reserved."
+            },
+            es: {
+                hero_title: "Hola, soy Isaac Kuakua",
+                hero_subtitle: "Un Desarrollador Apasionado Especializado en Programación, Diseño y Ciberseguridad",
+                hero_description: "Mientras reflexionas sobre los corredores de tu viaje educativo, visualiza el mosaico de experiencias que se han entrelazado para crear el intrincado tejido de tu trayecto de aprendizaje.",
+                view_work: "Ver Mi Trabajo",
+                contact_me: "Contáctame",
+                about_title: "Sobre Mí",
+                who_is_isaac: "¿Quién es ISAAC KUAKUA?",
+                about_description_1: "¡Hola! 👋 Soy ISAAC KUAKUA, una superestrella de último año de Tecnología de la Información con un apetito insaciable por la codificación y la electrónica. 🌐 Después de conquistar el reino de la informática industrial y la magia de redes durante tres gloriosos años, llevé mis talentos a la cautivadora isla de Chipre, donde actualmente me deleito en la gloria de mi cuarto año en el universo de TI.",
+                why_it: "¿Por qué el campo de TI?",
+                about_description_2: "La tecnología evoluciona constantemente, y los profesionales de TI a menudo necesitan participar en un aprendizaje continuo para mantenerse relevantes. Si disfrutas aprender y adaptarte a nuevas tecnologías, sígueme y únete a nosotros en TI o en todos los demás campos tecnológicos.",
+                why_iot_cyber: "¿Por qué IoT y Ciberseguridad?",
+                about_description_3: "Principalmente fue por IoT y después de este semestre evolucioné y comencé a disfrutar de la ciberseguridad. Ahora todo lo que puedo decir es que nadie está a salvo, así que aseguremos nuestros activos.",
+                education_experience: "Educación y Experiencia",
+                current_education: "Actual: Estudiante de Último Año de TI",
+                cyprus_location: "Chipre · 2023-Presente",
+                previous_education: "Informática Industrial y Redes",
+                previous_duration: "3 Años",
+                iot_specialization: "Especialización en IoT y Ciberseguridad",
+                current_focus: "Enfoque Actual",
+                skills_title: "Habilidades",
+                skills_subtitle: "Aquí están mis habilidades técnicas y profesionales",
+                programming_languages: "Programación",
+                web_development: "Desarrollo Web",
+                design_multimedia: "Diseño y Multimedia",
+                other_skills: "Otras Habilidades",
+                projects_title: "Mis Proyectos",
+                projects_subtitle: "Echa un vistazo a algunos de mis trabajos recientes",
+                cybersecurity_project: "Soluciones de Ciberseguridad",
+                cybersecurity_description: "Desarrollé protocolos de seguridad integrales y evaluaciones de vulnerabilidad para sistemas de red.",
+                iot_project: "Sistema de Hogar Inteligente IoT",
+                iot_description: "Diseñé e implementé un sistema de automatización del hogar conectado utilizando Arduino y sensores.",
+                ui_project: "Portafolio de Diseño UI/UX",
+                ui_description: "Creé interfaces de usuario y experiencias intuitivas para varias aplicaciones web y móviles.",
+                view_project: "Ver Proyecto",
+                contact_title: "Contáctame",
+                contact_subtitle: "Trabajemos juntos en tu próximo proyecto",
+                name_label: "Tu Nombre",
+                email_label: "Tu Correo Electrónico",
+                subject_label: "Asunto",
+                message_label: "Tu Mensaje",
+                send_message: "Enviar Mensaje",
+                email_contact: "Correo Electrónico",
+                phone_contact: "Teléfono",
+                location_contact: "Ubicación",
+                cyprus_location_full: "Chipre",
+                copyright: "© 2024 ISAAC KUAKUA – Todos los derechos reservados."
+            },
+            fr: {
+                hero_title: "Bonjour, je suis Isaac Kuakua",
+                hero_subtitle: "Un Développeur Passionné Spécialisé en Programmation, Design et Cybersécurité",
+                hero_description: "En réfléchissant aux couloirs de votre voyage éducatif, imaginez la mosaïque d'expériences qui se sont tissées pour créer le tissu complexe de votre parcours d'apprentissage.",
+                view_work: "Voir Mon Travail",
+                contact_me: "Me Contacter",
+                about_title: "À Propos de Moi",
+                who_is_isaac: "Qui est ISAAC KUAKUA ?",
+                about_description_1: "Salut ! 👋 Je suis ISAAC KUAKUA, une rockstar en dernière année de Technologie de l'Information avec un appétit insatiable pour la programmation et l'électronique. 🌐 Après avoir conquis le domaine de l'informatique industrielle et de la magie des réseaux pendant trois glorieuses années, j'ai apporté mes talents à la captivante île de Chypre, où je profite actuellement de la gloire de ma quatrième année dans l'univers des TI.",
+                why_it: "Pourquoi le domaine des TI ?",
+                about_description_2: "La technologie évolue constamment, et les professionnels des TI doivent souvent s'engager dans un apprentissage continu pour rester pertinents. Si vous aimez apprendre et vous adapter aux nouvelles technologies, suivez-moi et rejoignez-nous dans les TI ou tous les autres domaines technologiques.",
+                why_iot_cyber: "Pourquoi l'IoT et la Cybersécurité ?",
+                about_description_3: "Principalement, c'était à cause de l'IoT et après ce semestre, j'ai évolué et commencé à apprécier la cybersécurité. Maintenant, tout ce que je peux dire, c'est que personne n'est en sécurité, alors sécurisons nos actifs.",
+                education_experience: "Éducation et Expérience",
+                current_education: "Actuel : Étudiant en Dernière Année de TI",
+                cyprus_location: "Chypre · 2023-Présent",
+                previous_education: "Informatique Industrielle et Réseaux",
+                previous_duration: "3 Ans",
+                iot_specialization: "Spécialisation IoT et Cybersécurité",
+                current_focus: "Focus Actuel",
+                skills_title: "Compétences",
+                skills_subtitle: "Voici mes compétences techniques et professionnelles",
+                programming_languages: "Programmation",
+                web_development: "Développement Web",
+                design_multimedia: "Design et Multimédia",
+                other_skills: "Autres Compétences",
+                projects_title: "Mes Projets",
+                projects_subtitle: "Découvrez certains de mes travaux récents",
+                cybersecurity_project: "Solutions de Cybersécurité",
+                cybersecurity_description: "Développé des protocoles de sécurité complets et des évaluations de vulnérabilité pour les systèmes réseau.",
+                iot_project: "Système de Maison Intelligente IoT",
+                iot_description: "Conçu et mis en œuvre un système d'automatisation domestique connecté utilisant Arduino et des capteurs.",
+                ui_project: "Portfolio de Conception UI/UX",
+                ui_description: "Créé des interfaces utilisateur et des expériences intuitives pour diverses applications Web et mobiles.",
+                view_project: "Voir le Projet",
+                contact_title: "Me Contacter",
+                contact_subtitle: "Travaillons ensemble sur votre prochain projet",
+                name_label: "Votre Nom",
+                email_label: "Votre Email",
+                subject_label: "Sujet",
+                message_label: "Votre Message",
+                send_message: "Envoyer le Message",
+                email_contact: "Email",
+                phone_contact: "Téléphone",
+                location_contact: "Localisation",
+                cyprus_location_full: "Chypre",
+                copyright: "© 2024 ISAAC KUAKUA – Tous droits réservés."
+            }
+        };
+
+        // Language switching functionality
+        document.querySelectorAll('.dropdown-item').forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                const lang = this.getAttribute('data-lang');
+                changeLanguage(lang);
+            });
+        });
+
+        function changeLanguage(lang) {
+            const elements = document.querySelectorAll('[data-translate]');
+            elements.forEach(element => {
+                const key = element.getAttribute('data-translate');
+                if (translations[lang] && translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+        }
+    </script>
 </body>
-
 </html>
