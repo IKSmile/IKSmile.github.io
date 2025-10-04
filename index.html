@@ -10,7 +10,9 @@
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <style>
         :root {
@@ -19,38 +21,79 @@
             --accent-color: #e74c3c;
             --light-color: #ecf0f1;
             --dark-color: #2c3e50;
+            --gradient: linear-gradient(135deg, #3498db, #2c3e50);
+            --gradient-reverse: linear-gradient(135deg, #2c3e50, #3498db);
         }
         
         body {
             font-family: 'Poppins', sans-serif;
             scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .navbar {
+            transition: all 0.3s ease;
+            padding: 1rem 0;
+        }
+        
+        .navbar.scrolled {
+            background-color: rgba(44, 62, 80, 0.95) !important;
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 0;
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.1);
         }
         
         .navbar-brand {
             font-weight: 700;
             font-size: 1.8rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
         
         .hero-section {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            background: var(--gradient);
             color: white;
-            padding: 100px 0;
+            padding: 150px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" opacity="0.05"><polygon fill="white" points="0,1000 1000,0 1000,1000"/></svg>');
+            background-size: cover;
         }
         
         .profile-img {
-            border-radius: 50%;
+            border-radius: 20px;
             border: 5px solid rgba(255, 255, 255, 0.2);
-            transition: transform 0.3s ease;
+            transition: all 0.5s ease;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 2;
         }
         
         .profile-img:hover {
-            transform: scale(1.05);
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
         }
         
         .section-title {
             position: relative;
             margin-bottom: 3rem;
             font-weight: 700;
+            display: inline-block;
         }
         
         .section-title::after {
@@ -61,43 +104,104 @@
             width: 60px;
             height: 4px;
             background-color: var(--primary-color);
+            border-radius: 2px;
+        }
+        
+        .section-title.center::after {
+            left: 50%;
+            transform: translateX(-50%);
         }
         
         .skill-card {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             border: none;
-            border-radius: 10px;
+            border-radius: 15px;
             overflow: hidden;
+            height: 100%;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
         }
         
         .skill-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+        
+        .skill-card .card-header {
+            background: var(--gradient);
+            color: white;
+            border: none;
+            padding: 1.5rem;
         }
         
         .progress {
             height: 10px;
             border-radius: 5px;
+            background-color: #f1f1f1;
+        }
+        
+        .progress-bar {
+            border-radius: 5px;
+            transition: width 1.5s ease-in-out;
         }
         
         .project-card {
             border: none;
-            border-radius: 10px;
+            border-radius: 15px;
             overflow: hidden;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
         }
         
         .project-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
         }
         
         .project-img {
             height: 200px;
             object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .project-card:hover .project-img {
+            transform: scale(1.05);
+        }
+        
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(52, 152, 219, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .project-card:hover .project-overlay {
+            opacity: 1;
         }
         
         .contact-section {
             background-color: var(--light-color);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" opacity="0.03"><circle fill="%233498db" cx="500" cy="500" r="400"/></svg>');
+            background-size: cover;
         }
         
         .language-selector {
@@ -105,6 +209,26 @@
             bottom: 20px;
             right: 20px;
             z-index: 1000;
+        }
+        
+        .floating-btn {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 1000;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .back-to-top.show {
+            opacity: 1;
         }
         
         .dark-mode {
@@ -115,10 +239,15 @@
         .dark-mode .card {
             background-color: #16213e;
             color: #e6e6e6;
+            border: 1px solid #2d3746;
         }
         
         .dark-mode .navbar {
             background-color: #16213e !important;
+        }
+        
+        .dark-mode .navbar.scrolled {
+            background-color: rgba(22, 33, 62, 0.95) !important;
         }
         
         .dark-mode .hero-section {
@@ -129,11 +258,8 @@
             background-color: #0f3460;
         }
         
-        .floating-btn {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            z-index: 1000;
+        .dark-mode .progress {
+            background-color: #2d3746;
         }
         
         .timeline {
@@ -149,18 +275,27 @@
             bottom: 0;
             width: 4px;
             background-color: var(--primary-color);
+            border-radius: 2px;
         }
         
         .timeline-item {
             position: relative;
             margin-bottom: 30px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .dark-mode .timeline-item {
+            background: #16213e;
         }
         
         .timeline-item::before {
             content: '';
             position: absolute;
             left: -38px;
-            top: 5px;
+            top: 25px;
             width: 20px;
             height: 20px;
             border-radius: 50%;
@@ -171,13 +306,200 @@
         .dark-mode .timeline-item::before {
             border-color: #16213e;
         }
+        
+        .floating-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .shape {
+            position: absolute;
+            opacity: 0.1;
+            border-radius: 50%;
+        }
+        
+        .shape-1 {
+            width: 300px;
+            height: 300px;
+            background: var(--primary-color);
+            top: -150px;
+            right: -150px;
+        }
+        
+        .shape-2 {
+            width: 200px;
+            height: 200px;
+            background: var(--accent-color);
+            bottom: -100px;
+            left: -100px;
+        }
+        
+        .skill-badge {
+            display: inline-block;
+            background: var(--gradient);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            margin: 5px;
+            font-size: 0.85rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .skill-badge:hover {
+            transform: scale(1.05);
+        }
+        
+        .testimonial-card {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+            height: 100%;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stats-counter {
+            font-size: 3rem;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .typewriter {
+            overflow: hidden;
+            border-right: 2px solid var(--primary-color);
+            white-space: nowrap;
+            margin: 0 auto;
+            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--primary-color) }
+        }
+        
+        .btn-primary {
+            background: var(--gradient);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(52, 152, 219, 0.4);
+            background: var(--gradient-reverse);
+        }
+        
+        .btn-outline-primary {
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            background: transparent;
+            padding: 10px 28px;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-outline-primary:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(52, 152, 219, 0.3);
+        }
+        
+        .form-control {
+            border-radius: 10px;
+            padding: 12px 15px;
+            border: 1px solid #e1e1e1;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus {
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+            border-color: var(--primary-color);
+        }
+        
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--gradient);
+            color: white;
+            transition: all 0.3s ease;
+            margin: 0 5px;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+        }
+        
+        .section-padding {
+            padding: 100px 0;
+        }
+        
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 120px 0 80px;
+                text-align: center;
+            }
+            
+            .profile-img {
+                max-width: 250px;
+                margin-top: 30px;
+            }
+            
+            .section-padding {
+                padding: 60px 0;
+            }
+            
+            .stats-counter {
+                font-size: 2.5rem;
+            }
+        }
     </style>
 </head>
 <body>
+    <!-- Loading Screen -->
+    <div id="loading" class="position-fixed w-100 h-100 bg-white d-flex justify-content-center align-items-center" style="z-index: 9999;">
+        <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+
     <!-- Language Selector -->
     <div class="language-selector dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-            <i class="bi bi-translate"></i> Language
+        <button class="btn btn-primary dropdown-toggle rounded-pill" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-translate me-2"></i> <span id="current-language">English</span>
         </button>
         <ul class="dropdown-menu" aria-labelledby="languageDropdown">
             <li><a class="dropdown-item" href="#" data-lang="en">English</a></li>
@@ -188,13 +510,20 @@
     
     <!-- Dark Mode Toggle -->
     <div class="floating-btn">
-        <button class="btn btn-dark rounded-circle p-3" id="darkModeToggle">
+        <button class="btn btn-dark rounded-circle p-3 shadow" id="darkModeToggle">
             <i class="bi bi-moon"></i>
+        </button>
+    </div>
+    
+    <!-- Back to Top Button -->
+    <div class="back-to-top">
+        <button class="btn btn-primary rounded-circle p-3 shadow" id="backToTop">
+            <i class="bi bi-arrow-up"></i>
         </button>
     </div>
 
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
             <a class="navbar-brand" href="#">ISAAC KUAKUA</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -215,7 +544,7 @@
                         <a class="nav-link" href="#projects">Projects</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#experience">Experience</a>
+                        <a class="nav-link" href="#testimonials">Testimonials</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#contact">Contact</a>
@@ -227,10 +556,14 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero-section">
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+        </div>
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <h1 class="display-4 fw-bold mb-4" data-translate="hero_title">Hi, I'm Isaac Kuakua</h1>
+                <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1000">
+                    <h1 class="display-4 fw-bold mb-4 typewriter" data-translate="hero_title">Hi, I'm Isaac Kuakua</h1>
                     <p class="lead mb-4" data-translate="hero_subtitle">A Passionate Developer Specializing in Programming, Design and Cybersecurity</p>
                     <p class="mb-5" data-translate="hero_description">As you reflect on the corridors of your educational voyage, envision the mosaic of experiences that have woven together to create the intricate fabric of your learning journey.</p>
                     <div class="d-flex gap-3 flex-wrap">
@@ -238,7 +571,7 @@
                         <a href="#contact" class="btn btn-outline-light btn-lg" data-translate="contact_me">Contact Me</a>
                     </div>
                 </div>
-                <div class="col-lg-6 text-center mt-5 mt-lg-0">
+                <div class="col-lg-6 text-center mt-5 mt-lg-0" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="300">
                     <img src="images/3.jpeg" alt="Isaac Kuakua" class="profile-img img-fluid" style="max-width: 400px;">
                 </div>
             </div>
@@ -246,18 +579,18 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-5">
+    <section id="about" class="section-padding">
         <div class="container">
-            <h2 class="section-title" data-translate="about_title">About Me</h2>
+            <h2 class="section-title center mb-5" data-translate="about_title">About Me</h2>
             <div class="row">
-                <div class="col-lg-4 mb-4">
-                    <div class="card h-100 shadow">
+                <div class="col-lg-4 mb-4" data-aos="fade-right" data-aos-duration="800">
+                    <div class="card h-100 shadow border-0">
                         <img src="images/1.jpg" class="card-img-top" alt="About Isaac">
                     </div>
                 </div>
-                <div class="col-lg-8">
-                    <div class="card shadow h-100">
-                        <div class="card-body">
+                <div class="col-lg-8" data-aos="fade-left" data-aos-duration="800" data-aos-delay="200">
+                    <div class="card shadow border-0 h-100">
+                        <div class="card-body p-4">
                             <h3 class="card-title mb-4" data-translate="who_is_isaac">Who is ISAAC KUAKUA?</h3>
                             <p class="card-text mb-4" data-translate="about_description_1">Hey there! 👋 I'm ISAAC KUAKUA, a final-year Information Technology rockstar with an insatiable appetite for coding and electronics. 🌐 After conquering the realm of industrial informatics and network wizardry for three glorious years, I took my talents to the captivating island of Cyprus, where I'm currently basking in the glory of my fourth year in the IT universe.</p>
                             
@@ -271,10 +604,30 @@
                 </div>
             </div>
             
+            <!-- Stats Section -->
+            <div class="row mt-5 pt-5" data-aos="fade-up" data-aos-duration="800">
+                <div class="col-md-3 col-6 text-center mb-4">
+                    <div class="stats-counter">10+</div>
+                    <p class="text-muted">Projects Completed</p>
+                </div>
+                <div class="col-md-3 col-6 text-center mb-4">
+                    <div class="stats-counter">5+</div>
+                    <p class="text-muted">Years Experience</p>
+                </div>
+                <div class="col-md-3 col-6 text-center mb-4">
+                    <div class="stats-counter">15+</div>
+                    <p class="text-muted">Technologies</p>
+                </div>
+                <div class="col-md-3 col-6 text-center mb-4">
+                    <div class="stats-counter">100%</div>
+                    <p class="text-muted">Client Satisfaction</p>
+                </div>
+            </div>
+            
             <!-- Education & Experience Timeline -->
             <div class="row mt-5">
-                <div class="col-12">
-                    <h3 class="mb-4" data-translate="education_experience">Education & Experience</h3>
+                <div class="col-12" data-aos="fade-up" data-aos-duration="800">
+                    <h3 class="mb-4 text-center" data-translate="education_experience">Education & Experience</h3>
                     <div class="timeline">
                         <div class="timeline-item">
                             <h5 data-translate="current_education">Current: Final Year IT Student</h5>
@@ -295,23 +648,23 @@
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="py-5 bg-light">
+    <section id="skills" class="section-padding bg-light">
         <div class="container">
-            <h2 class="section-title text-center" data-translate="skills_title">Skills</h2>
+            <h2 class="section-title text-center mb-5" data-translate="skills_title">Skills</h2>
             <p class="text-center mb-5" data-translate="skills_subtitle">Here are my technical and professional skills</p>
             
             <div class="row g-4">
                 <!-- Programming Languages -->
-                <div class="col-md-6 col-lg-3">
-                    <div class="skill-card card h-100 shadow">
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-duration="800">
+                    <div class="skill-card">
+                        <div class="card-header text-center">
+                            <i class="bi bi-code-slash fs-1 mb-3"></i>
+                            <h5 class="card-title mb-0" data-translate="programming_languages">Programming</h5>
+                        </div>
                         <div class="card-body">
-                            <div class="d-flex align-items-center mb-3">
-                                <i class="bi bi-code-slash text-primary fs-2 me-3"></i>
-                                <h5 class="card-title mb-0" data-translate="programming_languages">Programming</h5>
-                            </div>
                             <ul class="list-unstyled">
-                                <li class="mb-2">
-                                    <div class="d-flex justify-content-between">
+                                <li class="mb-3">
+                                    <div class="d-flex justify-content-between mb-1">
                                         <span>JavaScript</span>
                                         <span>75%</span>
                                     </div>
@@ -319,8 +672,8 @@
                                         <div class="progress-bar" role="progressbar" style="width: 75%"></div>
                                     </div>
                                 </li>
-                                <li class="mb-2">
-                                    <div class="d-flex justify-content-between">
+                                <li class="mb-3">
+                                    <div class="d-flex justify-content-between mb-1">
                                         <span>Python</span>
                                         <span>75%</span>
                                     </div>
@@ -328,8 +681,8 @@
                                         <div class="progress-bar" role="progressbar" style="width: 75%"></div>
                                     </div>
                                 </li>
-                                <li class="mb-2">
-                                    <div class="d-flex justify-content-between">
+                                <li class="mb-3">
+                                    <div class="d-flex justify-content-between mb-1">
                                         <span>Java</span>
                                         <span>75%</span>
                                     </div>
@@ -337,8 +690,8 @@
                                         <div class="progress-bar" role="progressbar" style="width: 75%"></div>
                                     </div>
                                 </li>
-                                <li class="mb-2">
-                                    <div class="d-flex justify-content-between">
+                                <li class="mb-3">
+                                    <div class="d-flex justify-content-between mb-1">
                                         <span>C/C++</span>
                                         <span>75%</span>
                                     </div>
@@ -346,8 +699,8 @@
                                         <div class="progress-bar" role="progressbar" style="width: 75%"></div>
                                     </div>
                                 </li>
-                                <li class="mb-2">
-                                    <div class="d-flex justify-content-between">
+                                <li class="mb-3">
+                                    <div class="d-flex justify-content-between mb-1">
                                         <span>Swift</span>
                                         <span>86%</span>
                                     </div>
@@ -361,16 +714,16 @@
                 </div>
                 
                 <!-- Web Development -->
-                <div class="col-md-6 col-lg-3">
-                    <div class="skill-card card h-100 shadow">
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+                    <div class="skill-card">
+                        <div class="card-header text-center">
+                            <i class="bi bi-globe fs-1 mb-3"></i>
+                            <h5 class="card-title mb-0" data-translate="web_development">Web Development</h5>
+                        </div>
                         <div class="card-body">
-                            <div class="d-flex align-items-center mb-3">
-                                <i class="bi bi-globe text-primary fs-2 me-3"></i>
-                                <h5 class="card-title mb-0" data-translate="web_development">Web Development</h5>
-                            </div>
                             <ul class="list-unstyled">
-                                <li class="mb-2">
-                                    <div class="d-flex justify-content-between">
+                                <li class="mb-3">
+                                    <div class="d-flex justify-content-between mb-1">
                                         <span>HTML/CSS</span>
                                         <span>90%</span>
                                     </div>
@@ -378,8 +731,8 @@
                                         <div class="progress-bar" role="progressbar" style="width: 90%"></div>
                                     </div>
                                 </li>
-                                <li class="mb-2">
-                                    <div class="d-flex justify-content-between">
+                                <li class="mb-3">
+                                    <div class="d-flex justify-content-between mb-1">
                                         <span>PHP</span>
                                         <span>70%</span>
                                     </div>
@@ -387,8 +740,8 @@
                                         <div class="progress-bar" role="progressbar" style="width: 70%"></div>
                                     </div>
                                 </li>
-                                <li class="mb-2">
-                                    <div class="d-flex justify-content-between">
+                                <li class="mb-3">
+                                    <div class="d-flex justify-content-between mb-1">
                                         <span>MySQL</span>
                                         <span>95%</span>
                                     </div>
@@ -396,8 +749,8 @@
                                         <div class="progress-bar" role="progressbar" style="width: 95%"></div>
                                     </div>
                                 </li>
-                                <li class="mb-2">
-                                    <div class="d-flex justify-content-between">
+                                <li class="mb-3">
+                                    <div class="d-flex justify-content-between mb-1">
                                         <span>MongoDB</span>
                                         <span>75%</span>
                                     </div>
@@ -411,16 +764,16 @@
                 </div>
                 
                 <!-- Design & Multimedia -->
-                <div class="col-md-6 col-lg-3">
-                    <div class="skill-card card h-100 shadow">
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+                    <div class="skill-card">
+                        <div class="card-header text-center">
+                            <i class="bi bi-palette fs-1 mb-3"></i>
+                            <h5 class="card-title mb-0" data-translate="design_multimedia">Design & Multimedia</h5>
+                        </div>
                         <div class="card-body">
-                            <div class="d-flex align-items-center mb-3">
-                                <i class="bi bi-palette text-primary fs-2 me-3"></i>
-                                <h5 class="card-title mb-0" data-translate="design_multimedia">Design & Multimedia</h5>
-                            </div>
                             <ul class="list-unstyled">
-                                <li class="mb-2">
-                                    <div class="d-flex justify-content-between">
+                                <li class="mb-3">
+                                    <div class="d-flex justify-content-between mb-1">
                                         <span>UI/UX Design</span>
                                         <span>80%</span>
                                     </div>
@@ -428,8 +781,8 @@
                                         <div class="progress-bar" role="progressbar" style="width: 80%"></div>
                                     </div>
                                 </li>
-                                <li class="mb-2">
-                                    <div class="d-flex justify-content-between">
+                                <li class="mb-3">
+                                    <div class="d-flex justify-content-between mb-1">
                                         <span>Adobe Photoshop</span>
                                         <span>65%</span>
                                     </div>
@@ -437,8 +790,8 @@
                                         <div class="progress-bar" role="progressbar" style="width: 65%"></div>
                                     </div>
                                 </li>
-                                <li class="mb-2">
-                                    <div class="d-flex justify-content-between">
+                                <li class="mb-3">
+                                    <div class="d-flex justify-content-between mb-1">
                                         <span>Adobe Premiere Pro</span>
                                         <span>65%</span>
                                     </div>
@@ -446,8 +799,8 @@
                                         <div class="progress-bar" role="progressbar" style="width: 65%"></div>
                                     </div>
                                 </li>
-                                <li class="mb-2">
-                                    <div class="d-flex justify-content-between">
+                                <li class="mb-3">
+                                    <div class="d-flex justify-content-between mb-1">
                                         <span>Adobe Lightroom</span>
                                         <span>55%</span>
                                     </div>
@@ -461,16 +814,16 @@
                 </div>
                 
                 <!-- Other Skills -->
-                <div class="col-md-6 col-lg-3">
-                    <div class="skill-card card h-100 shadow">
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
+                    <div class="skill-card">
+                        <div class="card-header text-center">
+                            <i class="bi bi-tools fs-1 mb-3"></i>
+                            <h5 class="card-title mb-0" data-translate="other_skills">Other Skills</h5>
+                        </div>
                         <div class="card-body">
-                            <div class="d-flex align-items-center mb-3">
-                                <i class="bi bi-tools text-primary fs-2 me-3"></i>
-                                <h5 class="card-title mb-0" data-translate="other_skills">Other Skills</h5>
-                            </div>
                             <ul class="list-unstyled">
-                                <li class="mb-2">
-                                    <div class="d-flex justify-content-between">
+                                <li class="mb-3">
+                                    <div class="d-flex justify-content-between mb-1">
                                         <span>IoT Development</span>
                                         <span>70%</span>
                                     </div>
@@ -478,8 +831,8 @@
                                         <div class="progress-bar" role="progressbar" style="width: 70%"></div>
                                     </div>
                                 </li>
-                                <li class="mb-2">
-                                    <div class="d-flex justify-content-between">
+                                <li class="mb-3">
+                                    <div class="d-flex justify-content-between mb-1">
                                         <span>Cybersecurity</span>
                                         <span>75%</span>
                                     </div>
@@ -487,8 +840,8 @@
                                         <div class="progress-bar" role="progressbar" style="width: 75%"></div>
                                     </div>
                                 </li>
-                                <li class="mb-2">
-                                    <div class="d-flex justify-content-between">
+                                <li class="mb-3">
+                                    <div class="d-flex justify-content-between mb-1">
                                         <span>Arduino</span>
                                         <span>55%</span>
                                     </div>
@@ -496,8 +849,8 @@
                                         <div class="progress-bar" role="progressbar" style="width: 55%"></div>
                                     </div>
                                 </li>
-                                <li class="mb-2">
-                                    <div class="d-flex justify-content-between">
+                                <li class="mb-3">
+                                    <div class="d-flex justify-content-between mb-1">
                                         <span>Microsoft Office</span>
                                         <span>85%</span>
                                     </div>
@@ -510,20 +863,42 @@
                     </div>
                 </div>
             </div>
+            
+            <!-- Additional Skills -->
+            <div class="row mt-5" data-aos="fade-up" data-aos-duration="800">
+                <div class="col-12 text-center">
+                    <h4 class="mb-4">Additional Skills & Technologies</h4>
+                    <div class="d-flex flex-wrap justify-content-center">
+                        <span class="skill-badge">Git</span>
+                        <span class="skill-badge">Docker</span>
+                        <span class="skill-badge">AWS</span>
+                        <span class="skill-badge">React</span>
+                        <span class="skill-badge">Node.js</span>
+                        <span class="skill-badge">REST APIs</span>
+                        <span class="skill-badge">Agile Methodologies</span>
+                        <span class="skill-badge">Problem Solving</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="py-5">
+    <section id="projects" class="section-padding">
         <div class="container">
-            <h2 class="section-title text-center" data-translate="projects_title">My Projects</h2>
+            <h2 class="section-title text-center mb-5" data-translate="projects_title">My Projects</h2>
             <p class="text-center mb-5" data-translate="projects_subtitle">Check out some of my recent work</p>
             
             <div class="row g-4">
                 <!-- Project 1 -->
-                <div class="col-md-6 col-lg-4">
-                    <div class="project-card card h-100 shadow">
-                        <img src="images/cybersecurity.png" class="card-img-top project-img" alt="Cybersecurity Project">
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-duration="800">
+                    <div class="project-card">
+                        <div class="position-relative overflow-hidden">
+                            <img src="images/cybersecurity.png" class="card-img-top project-img" alt="Cybersecurity Project">
+                            <div class="project-overlay">
+                                <a href="pages/security.html" class="btn btn-light btn-sm">View Details</a>
+                            </div>
+                        </div>
                         <div class="card-body">
                             <h5 class="card-title" data-translate="cybersecurity_project">Cybersecurity Solutions</h5>
                             <p class="card-text" data-translate="cybersecurity_description">Developed comprehensive security protocols and vulnerability assessments for network systems.</p>
@@ -539,9 +914,14 @@
                 </div>
                 
                 <!-- Project 2 -->
-                <div class="col-md-6 col-lg-4">
-                    <div class="project-card card h-100 shadow">
-                        <img src="images/iot.jpeg" class="card-img-top project-img" alt="IoT Project">
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+                    <div class="project-card">
+                        <div class="position-relative overflow-hidden">
+                            <img src="images/iot.jpeg" class="card-img-top project-img" alt="IoT Project">
+                            <div class="project-overlay">
+                                <a href="pages/iot.html" class="btn btn-light btn-sm">View Details</a>
+                            </div>
+                        </div>
                         <div class="card-body">
                             <h5 class="card-title" data-translate="iot_project">IoT Smart Home System</h5>
                             <p class="card-text" data-translate="iot_description">Designed and implemented a connected home automation system using Arduino and sensors.</p>
@@ -557,9 +937,14 @@
                 </div>
                 
                 <!-- Project 3 -->
-                <div class="col-md-6 col-lg-4">
-                    <div class="project-card card h-100 shadow">
-                        <img src="images/ui.png" class="card-img-top project-img" alt="UI/UX Project">
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+                    <div class="project-card">
+                        <div class="position-relative overflow-hidden">
+                            <img src="images/ui.png" class="card-img-top project-img" alt="UI/UX Project">
+                            <div class="project-overlay">
+                                <a href="#" class="btn btn-light btn-sm">View Details</a>
+                            </div>
+                        </div>
                         <div class="card-body">
                             <h5 class="card-title" data-translate="ui_project">UI/UX Design Portfolio</h5>
                             <p class="card-text" data-translate="ui_description">Created intuitive user interfaces and experiences for various web and mobile applications.</p>
@@ -574,18 +959,98 @@
                     </div>
                 </div>
             </div>
+            
+            <div class="text-center mt-5">
+                <a href="#" class="btn btn-outline-primary">View All Projects</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="section-padding bg-light">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">Testimonials</h2>
+            <p class="text-center mb-5">What clients and colleagues say about my work</p>
+            
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="fade-up" data-aos-duration="800">
+                    <div class="testimonial-card">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client" class="rounded-circle me-3" width="50">
+                                <div>
+                                    <h6 class="mb-0">John Smith</h6>
+                                    <small class="text-muted">Project Manager</small>
+                                </div>
+                            </div>
+                            <p class="card-text">"Isaac delivered exceptional work on our cybersecurity project. His attention to detail and problem-solving skills are remarkable."</p>
+                            <div class="text-warning">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+                    <div class="testimonial-card">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Client" class="rounded-circle me-3" width="50">
+                                <div>
+                                    <h6 class="mb-0">Sarah Johnson</h6>
+                                    <small class="text-muted">UI/UX Designer</small>
+                                </div>
+                            </div>
+                            <p class="card-text">"Working with Isaac was a pleasure. His technical expertise and creative approach resulted in a stunning final product."</p>
+                            <div class="text-warning">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-half"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+                    <div class="testimonial-card">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="Client" class="rounded-circle me-3" width="50">
+                                <div>
+                                    <h6 class="mb-0">Michael Brown</h6>
+                                    <small class="text-muted">Tech Lead</small>
+                                </div>
+                            </div>
+                            <p class="card-text">"Isaac's IoT solution exceeded our expectations. He's a talented developer with a bright future in technology."</p>
+                            <div class="text-warning">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-5 contact-section">
+    <section id="contact" class="section-padding contact-section">
         <div class="container">
-            <h2 class="section-title text-center" data-translate="contact_title">Contact Me</h2>
+            <h2 class="section-title text-center mb-5" data-translate="contact_title">Contact Me</h2>
             <p class="text-center mb-5" data-translate="contact_subtitle">Let's work together on your next project</p>
             
             <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <form class="row g-3">
+                <div class="col-lg-8" data-aos="fade-up" data-aos-duration="800">
+                    <form class="row g-4 bg-white p-4 rounded shadow">
                         <div class="col-md-6">
                             <label for="name" class="form-label" data-translate="name_label">Your Name</label>
                             <input type="text" class="form-control" id="name" required>
@@ -611,7 +1076,7 @@
             
             <!-- Contact Info -->
             <div class="row mt-5">
-                <div class="col-md-4 text-center mb-4">
+                <div class="col-md-4 text-center mb-4" data-aos="fade-up" data-aos-duration="800">
                     <div class="card border-0 bg-transparent">
                         <div class="card-body">
                             <i class="bi bi-envelope fs-1 text-primary mb-3"></i>
@@ -620,7 +1085,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 text-center mb-4">
+                <div class="col-md-4 text-center mb-4" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
                     <div class="card border-0 bg-transparent">
                         <div class="card-body">
                             <i class="bi bi-telephone fs-1 text-primary mb-3"></i>
@@ -629,7 +1094,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 text-center mb-4">
+                <div class="col-md-4 text-center mb-4" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
                     <div class="card border-0 bg-transparent">
                         <div class="card-body">
                             <i class="bi bi-geo-alt fs-1 text-primary mb-3"></i>
@@ -643,18 +1108,18 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-dark text-light py-4">
+    <footer class="bg-dark text-light py-5">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-md-6 text-center text-md-start">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
                     <p class="mb-0" data-translate="copyright">© 2024 ISAAC KUAKUA – All Rights Reserved.</p>
                 </div>
                 <div class="col-md-6 text-center text-md-end">
                     <div class="social-links">
-                        <a href="#" class="text-light me-3"><i class="bi bi-linkedin"></i></a>
-                        <a href="#" class="text-light me-3"><i class="bi bi-github"></i></a>
-                        <a href="#" class="text-light me-3"><i class="bi bi-twitter"></i></a>
-                        <a href="#" class="text-light"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-linkedin"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-github"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
                     </div>
                 </div>
             </div>
@@ -663,9 +1128,51 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS Animation Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     
     <!-- Custom JS -->
     <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+        
+        // Loading Screen
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.getElementById('loading').style.display = 'none';
+            }, 1000);
+        });
+        
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+            
+            // Back to top button
+            const backToTop = document.querySelector('.back-to-top');
+            if (window.scrollY > 300) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+        });
+        
+        // Back to top functionality
+        document.getElementById('backToTop').addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
         // Dark Mode Toggle
         document.getElementById('darkModeToggle').addEventListener('click', function() {
             document.body.classList.toggle('dark-mode');
@@ -673,12 +1180,40 @@
             if (document.body.classList.contains('dark-mode')) {
                 icon.classList.remove('bi-moon');
                 icon.classList.add('bi-sun');
+                localStorage.setItem('darkMode', 'enabled');
             } else {
                 icon.classList.remove('bi-sun');
                 icon.classList.add('bi-moon');
+                localStorage.setItem('darkMode', 'disabled');
             }
         });
-
+        
+        // Check for saved dark mode preference
+        if (localStorage.getItem('darkMode') === 'enabled') {
+            document.body.classList.add('dark-mode');
+            document.getElementById('darkModeToggle').querySelector('i').classList.remove('bi-moon');
+            document.getElementById('darkModeToggle').querySelector('i').classList.add('bi-sun');
+        }
+        
+        // Animate progress bars when they come into view
+        const progressBars = document.querySelectorAll('.progress-bar');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const width = entry.target.style.width;
+                    entry.target.style.width = '0';
+                    setTimeout(() => {
+                        entry.target.style.width = width;
+                    }, 300);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        progressBars.forEach(bar => {
+            observer.observe(bar);
+        });
+        
         // Language Translation
         const translations = {
             en: {
@@ -833,6 +1368,7 @@
                 e.preventDefault();
                 const lang = this.getAttribute('data-lang');
                 changeLanguage(lang);
+                document.getElementById('current-language').textContent = this.textContent;
             });
         });
 
@@ -844,7 +1380,15 @@
                     element.textContent = translations[lang][key];
                 }
             });
+            localStorage.setItem('preferredLanguage', lang);
         }
+
+        // Check for saved language preference
+        const savedLanguage = localStorage.getItem('preferredLanguage') || 'en';
+        changeLanguage(savedLanguage);
+        document.getElementById('current-language').textContent = 
+            savedLanguage === 'en' ? 'English' : 
+            savedLanguage === 'es' ? 'Español' : 'Français';
     </script>
 </body>
 </html>
