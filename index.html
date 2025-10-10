@@ -1,69 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Isaac Kuakua - Portfolio</title>
-    
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
     <!-- AOS Animation Library -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
+
     <style>
         :root {
-            --primary-color: #3498db;
+            --primary-color: #03436d;
             --secondary-color: #2c3e50;
             --accent-color: #e74c3c;
             --light-color: #ecf0f1;
             --dark-color: #2c3e50;
-            --gradient: linear-gradient(135deg, #3498db, #2c3e50);
-            --gradient-reverse: linear-gradient(135deg, #2c3e50, #3498db);
+            --gradient: linear-gradient(135deg, #03436d, #50312c);
+            --green-gradient: linear-gradient(135deg, #096f24, #acc552);
+            --orange-gradient: linear-gradient(135deg, #cc6c0c, #acc552);
+            --gradient-reverse: linear-gradient(135deg, #50312c, #03436d);
         }
-        
+
         body {
             font-family: 'Poppins', sans-serif;
             scroll-behavior: smooth;
             overflow-x: hidden;
         }
-        
-        h1, h2, h3, h4, h5, h6 {
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
             font-family: 'Montserrat', sans-serif;
         }
-        
+
         .navbar {
             transition: all 0.3s ease;
             padding: 1rem 0;
         }
-        
+
         .navbar.scrolled {
-            background-color: rgba(44, 62, 80, 0.95) !important;
+            background-color: rgba(19, 19, 30, 0.879) !important;
             backdrop-filter: blur(10px);
             padding: 0.5rem 0;
             box-shadow: 0 4px 18px rgba(0, 0, 0, 0.1);
         }
-        
+
         .navbar-brand {
             font-weight: 700;
             font-size: 1.8rem;
-            background: var(--gradient);
+            background: #d4d4d1;
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
         }
-        
+
         .hero-section {
             background: var(--gradient);
             color: white;
             padding: 150px 0 100px;
             position: relative;
             overflow: hidden;
+            height: 100vh;
         }
-        
+
         .hero-section::before {
             content: '';
             position: absolute;
@@ -74,7 +85,7 @@
             background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" opacity="0.05"><polygon fill="white" points="0,1000 1000,0 1000,1000"/></svg>');
             background-size: cover;
         }
-        
+
         .profile-img {
             border-radius: 20px;
             border: 5px solid rgba(255, 255, 255, 0.2);
@@ -83,19 +94,19 @@
             position: relative;
             z-index: 2;
         }
-        
+
         .profile-img:hover {
             transform: translateY(-10px) scale(1.03);
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
         }
-        
+
         .section-title {
             position: relative;
             margin-bottom: 3rem;
             font-weight: 700;
             display: inline-block;
         }
-        
+
         .section-title::after {
             content: '';
             position: absolute;
@@ -106,12 +117,12 @@
             background-color: var(--primary-color);
             border-radius: 2px;
         }
-        
+
         .section-title.center::after {
             left: 50%;
             transform: translateX(-50%);
         }
-        
+
         .skill-card {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             border: none;
@@ -121,30 +132,30 @@
             background: white;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
         }
-        
+
         .skill-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
         }
-        
+
         .skill-card .card-header {
             background: var(--gradient);
             color: white;
             border: none;
             padding: 1.5rem;
         }
-        
+
         .progress {
             height: 10px;
             border-radius: 5px;
             background-color: #f1f1f1;
         }
-        
+
         .progress-bar {
             border-radius: 5px;
             transition: width 1.5s ease-in-out;
         }
-        
+
         .project-card {
             border: none;
             border-radius: 15px;
@@ -153,22 +164,22 @@
             height: 100%;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
         }
-        
+
         .project-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
         }
-        
+
         .project-img {
             height: 200px;
             object-fit: cover;
             transition: transform 0.5s ease;
         }
-        
+
         .project-card:hover .project-img {
             transform: scale(1.05);
         }
-        
+
         .project-overlay {
             position: absolute;
             top: 0;
@@ -182,17 +193,16 @@
             opacity: 0;
             transition: opacity 0.3s ease;
         }
-        
+
         .project-card:hover .project-overlay {
             opacity: 1;
         }
-        
+
         .contact-section {
-            background-color: var(--light-color);
             position: relative;
             overflow: hidden;
         }
-        
+
         .contact-section::before {
             content: '';
             position: absolute;
@@ -203,21 +213,21 @@
             background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" opacity="0.03"><circle fill="%233498db" cx="500" cy="500" r="400"/></svg>');
             background-size: cover;
         }
-        
+
         .language-selector {
             position: fixed;
             bottom: 20px;
             right: 20px;
             z-index: 1000;
         }
-        
+
         .floating-btn {
             position: fixed;
             bottom: 20px;
             left: 20px;
             z-index: 1000;
         }
-        
+
         .back-to-top {
             position: fixed;
             bottom: 80px;
@@ -226,47 +236,47 @@
             opacity: 0;
             transition: opacity 0.3s ease;
         }
-        
+
         .back-to-top.show {
             opacity: 1;
         }
-        
+
         .dark-mode {
-            background-color: #1a1a2e;
+            background-color: #2d3746;
             color: #e6e6e6;
         }
-        
+
         .dark-mode .card {
             background-color: #16213e;
             color: #e6e6e6;
             border: 1px solid #2d3746;
         }
-        
+
         .dark-mode .navbar {
             background-color: #16213e !important;
         }
-        
+
         .dark-mode .navbar.scrolled {
             background-color: rgba(22, 33, 62, 0.95) !important;
         }
-        
+
         .dark-mode .hero-section {
             background: linear-gradient(135deg, #0f3460, #1a1a2e);
         }
-        
+
         .dark-mode .contact-section {
-            background-color: #0f3460;
+            background-color: #2d3746;
         }
-        
+
         .dark-mode .progress {
             background-color: #2d3746;
         }
-        
+
         .timeline {
             position: relative;
             padding-left: 30px;
         }
-        
+
         .timeline::before {
             content: '';
             position: absolute;
@@ -277,7 +287,7 @@
             background-color: var(--primary-color);
             border-radius: 2px;
         }
-        
+
         .timeline-item {
             position: relative;
             margin-bottom: 30px;
@@ -286,11 +296,11 @@
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
         }
-        
+
         .dark-mode .timeline-item {
             background: #16213e;
         }
-        
+
         .timeline-item::before {
             content: '';
             position: absolute;
@@ -302,11 +312,11 @@
             background-color: var(--primary-color);
             border: 4px solid white;
         }
-        
+
         .dark-mode .timeline-item::before {
             border-color: #16213e;
         }
-        
+
         .floating-shapes {
             position: absolute;
             top: 0;
@@ -316,13 +326,13 @@
             overflow: hidden;
             z-index: 1;
         }
-        
+
         .shape {
             position: absolute;
             opacity: 0.1;
             border-radius: 50%;
         }
-        
+
         .shape-1 {
             width: 300px;
             height: 300px;
@@ -330,7 +340,7 @@
             top: -150px;
             right: -150px;
         }
-        
+
         .shape-2 {
             width: 200px;
             height: 200px;
@@ -338,7 +348,7 @@
             bottom: -100px;
             left: -100px;
         }
-        
+
         .skill-badge {
             display: inline-block;
             background: var(--gradient);
@@ -349,11 +359,11 @@
             font-size: 0.85rem;
             transition: transform 0.3s ease;
         }
-        
+
         .skill-badge:hover {
             transform: scale(1.05);
         }
-        
+
         .testimonial-card {
             border-radius: 15px;
             overflow: hidden;
@@ -361,11 +371,11 @@
             transition: transform 0.3s ease;
             height: 100%;
         }
-        
+
         .testimonial-card:hover {
             transform: translateY(-5px);
         }
-        
+
         .stats-counter {
             font-size: 3rem;
             font-weight: 700;
@@ -374,7 +384,7 @@
             background-clip: text;
             color: transparent;
         }
-        
+
         .typewriter {
             overflow: hidden;
             border-right: 2px solid var(--primary-color);
@@ -382,17 +392,29 @@
             margin: 0 auto;
             animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
         }
-        
+
         @keyframes typing {
-            from { width: 0 }
-            to { width: 100% }
+            from {
+                width: 0
+            }
+
+            to {
+                width: 100%
+            }
         }
-        
+
         @keyframes blink-caret {
-            from, to { border-color: transparent }
-            50% { border-color: var(--primary-color) }
+
+            from,
+            to {
+                border-color: transparent
+            }
+
+            50% {
+                border-color: var(--primary-color)
+            }
         }
-        
+
         .btn-primary {
             background: var(--gradient);
             border: none;
@@ -402,13 +424,13 @@
             transition: all 0.3s ease;
             box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
         }
-        
+
         .btn-primary:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 20px rgba(52, 152, 219, 0.4);
             background: var(--gradient-reverse);
         }
-        
+
         .btn-outline-primary {
             border: 2px solid var(--primary-color);
             color: var(--primary-color);
@@ -418,26 +440,26 @@
             font-weight: 500;
             transition: all 0.3s ease;
         }
-        
+
         .btn-outline-primary:hover {
             background: var(--primary-color);
             color: white;
             transform: translateY(-3px);
             box-shadow: 0 8px 20px rgba(52, 152, 219, 0.3);
         }
-        
+
         .form-control {
             border-radius: 10px;
             padding: 12px 15px;
             border: 1px solid #e1e1e1;
             transition: all 0.3s ease;
         }
-        
+
         .form-control:focus {
             box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
             border-color: var(--primary-color);
         }
-        
+
         .social-icon {
             display: inline-flex;
             align-items: center;
@@ -450,80 +472,617 @@
             transition: all 0.3s ease;
             margin: 0 5px;
         }
-        
+
         .social-icon:hover {
             transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
         }
-        
+
         .section-padding {
             padding: 100px 0;
         }
-        
+
         .parallax {
             background-attachment: fixed;
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
         }
-        
+
         @media (max-width: 768px) {
             .hero-section {
                 padding: 120px 0 80px;
                 text-align: center;
             }
-            
+
             .profile-img {
                 max-width: 250px;
                 margin-top: 30px;
             }
-            
+
             .section-padding {
                 padding: 60px 0;
             }
-            
+
             .stats-counter {
                 font-size: 2.5rem;
             }
         }
+
+
+        /* About Section*/
+        #about {
+            position: relative;
+            overflow: hidden;
+        }
+
+        #about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" opacity="0.03"><polygon fill="%2303436d" points="0,0 1000,1000 0,1000"/></svg>');
+            background-size: cover;
+            z-index: -1;
+        }
+
+        .about-card {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            border: none;
+            height: 100%;
+        }
+
+        .about-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .about-img {
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .about-card:hover .about-img {
+            transform: scale(1.05);
+        }
+
+        .about-content {
+            padding: 2.5rem;
+            position: relative;
+        }
+
+        .about-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--gradient);
+            border-radius: 5px;
+        }
+
+        .language-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .language-badge {
+            background: var(--gradient);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* Skills Section */
+        #skills {
+            position: relative;
+        }
+
+        #skills::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" opacity="0.03"><circle fill="%23e74c3c" cx="500" cy="500" r="400"/></svg>');
+            background-size: cover;
+            z-index: -1;
+        }
+
+        .dark-mode #skills::before {
+            background: #2d3746;
+        }
+
+        .skill-category {
+            margin-bottom: 3rem;
+        }
+
+        .skill-category-title {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .skill-category-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--gradient);
+            border-radius: 3px;
+        }
+
+        .skill-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .skill-icon {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gradient);
+            color: white;
+            border-radius: 10px;
+            margin-right: 15px;
+            font-size: 1.5rem;
+        }
+
+        .skill-details {
+            flex: 1;
+        }
+
+        .skill-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .skill-bar {
+            height: 8px;
+            background: #f1f1f1;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .green-bar {
+            background: var(--green-gradient);
+        }
+
+        .orange-bar {
+            background: var(--orange-gradient);
+        }
+
+        .skill-level {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 1.5s ease-in-out;
+        }
+
+        /* Experience Section  */
+        #experience {
+            position: relative;
+            overflow: hidden;
+        }
+
+        #experience::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" opacity="0.03"><polygon fill="%2303436d" points="0,1000 1000,0 1000,1000"/></svg>');
+            background-size: cover;
+            z-index: -1;
+        }
+
+
+        .dark-mode #experience::before {
+            background: #2d3746;
+        }
+
+        .timeline-enhanced {
+            position: relative;
+            padding: 0;
+        }
+
+        .timeline-enhanced::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+
+        .timeline-item-enhanced {
+            position: relative;
+            margin-bottom: 50px;
+            width: 100%;
+        }
+
+        .timeline-item-enhanced:nth-child(odd) .timeline-content {
+            margin-left: auto;
+            padding-left: 50px;
+        }
+
+        .timeline-item-enhanced:nth-child(even) .timeline-content {
+            margin-right: auto;
+            padding-right: 50px;
+        }
+
+        .timeline-content {
+            width: 45%;
+            padding: 25px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+        }
+
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 25px;
+            width: 20px;
+            height: 20px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            border: 4px solid white;
+        }
+
+        .timeline-item-enhanced:nth-child(odd) .timeline-content::before {
+            left: 0px;
+        }
+
+        .timeline-item-enhanced:nth-child(even) .timeline-content::before {
+            right: 0px;
+        }
+
+        .timeline-date {
+            position: absolute;
+            top: -30px;
+            padding: 5px 15px;
+            background: var(--gradient);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .timeline-item-enhanced:nth-child(odd) .timeline-date {
+            right: calc(55% + 20px);
+        }
+
+        .timeline-item-enhanced:nth-child(even) .timeline-date {
+            left: calc(55% + 20px);
+        }
+
+        .education-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .education-item {
+            padding: 15px;
+            margin-bottom: 15px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            padding-left: 60px;
+        }
+
+        .education-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .education-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--gradient);
+            color: white;
+            border-radius: 50%;
+        }
+
+        /* Projects Section Enhancements */
+        #projects {
+            position: relative;
+        }
+
+        #projects::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" opacity="0.03"><rect fill="%23e74c3c" x="200" y="200" width="600" height="600" rx="50"/></svg>');
+            background-color: var(--light-color);
+            background-size: cover;
+            z-index: -1;
+        }
+
+        .dark-mode #projects::before {
+            background: #2d3746;
+        }
+
+        .project-card-enhanced {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            height: 100%;
+            background-color: #ffffff;
+            position: relative;
+        }
+
+        .project-card-enhanced:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-img-container {
+            position: relative;
+            overflow: hidden;
+            height: 220px;
+        }
+
+        .project-img-enhanced {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .project-card-enhanced:hover .project-img-enhanced {
+            transform: scale(1.1);
+        }
+
+        .project-overlay-enhanced {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(3, 67, 109, 0.85);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .project-card-enhanced:hover .project-overlay-enhanced {
+            opacity: 1;
+        }
+
+        .project-content {
+            padding: 25px;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .project-tag {
+            background: var(--light-color);
+            color: var(--dark-color);
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            color: var(--accent-color);
+        }
+
+        /* Dark Mode Enhancements */
+        .dark-mode .about-card,
+        .dark-mode .skill-item,
+        .dark-mode .timeline-content,
+        .dark-mode .education-item,
+        .dark-mode .project-card-enhanced {
+            background: #16213e;
+            color: #e6e6e6;
+        }
+
+        .dark-mode .language-badge,
+        .dark-mode .project-tag {
+            background: #0f3460;
+            color: #e6e6e6;
+        }
+
+        .dark-mode .skill-bar {
+            background: #ffffff;
+        }
+
+
+
+
+        .dark-mode .timeline-content::before {
+            border-color: #bfb37a;
+        }
+
+        .photo {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            transition: transform 0.3s;
+        }
+
+        .photo:hover {
+            transform: scale(1.05);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            .timeline-enhanced::before {
+                left: 30px;
+            }
+
+            .timeline-item-enhanced:nth-child(odd) .timeline-content,
+            .timeline-item-enhanced:nth-child(even) .timeline-content {
+                width: calc(100% - 80px);
+                margin-left: 80px;
+                padding: 20px;
+            }
+
+            .timeline-item-enhanced:nth-child(odd) .timeline-content::before,
+            .timeline-item-enhanced:nth-child(even) .timeline-content::before {
+                left: -40px;
+            }
+
+            .timeline-item-enhanced:nth-child(odd) .timeline-date,
+            .timeline-item-enhanced:nth-child(even) .timeline-date {
+                position: relative;
+                top: 0;
+                left: 0;
+                right: 0;
+                margin-bottom: 10px;
+                display: inline-block;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .about-content {
+                padding: 1.5rem;
+            }
+
+            .skill-item {
+                padding: 12px;
+            }
+
+            .skill-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+
+            .timeline-enhanced::before {
+                left: 20px;
+            }
+
+            .timeline-item-enhanced:nth-child(odd) .timeline-content,
+            .timeline-item-enhanced:nth-child(even) .timeline-content {
+                width: calc(100% - 60px);
+                margin-left: 60px;
+                padding: 15px;
+            }
+
+            .timeline-item-enhanced:nth-child(odd) .timeline-content::before,
+            .timeline-item-enhanced:nth-child(even) .timeline-content::before {
+                left: -30px;
+                width: 15px;
+                height: 15px;
+            }
+
+            .project-content {
+                padding: 20px;
+            }
+        }
     </style>
 </head>
-<body>
-    <!-- Loading Screen -->
-    <div id="loading" class="position-fixed w-100 h-100 bg-white d-flex justify-content-center align-items-center" style="z-index: 9999;">
-        <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;">
-            <span class="visually-hidden">Loading...</span>
-        </div>
-    </div>
 
+<body>
     <!-- Language Selector -->
     <div class="language-selector dropdown">
-        <button class="btn btn-primary dropdown-toggle rounded-pill" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+        <button class="btn btn-primary dropdown-toggle rounded-pill" type="button" id="languageDropdown"
+            data-bs-toggle="dropdown" aria-expanded="false">
             <i class="bi bi-translate me-2"></i> <span id="current-language">English</span>
         </button>
         <ul class="dropdown-menu" aria-labelledby="languageDropdown">
             <li><a class="dropdown-item" href="#" data-lang="en">English</a></li>
-            <li><a class="dropdown-item" href="#" data-lang="es">Español</a></li>
             <li><a class="dropdown-item" href="#" data-lang="fr">Français</a></li>
+            <li><a class="dropdown-item" href="#" data-lang="es">Español</a></li>
+            <li><a class="dropdown-item" href="#" data-lang="ln">Lingala</a></li>
         </ul>
     </div>
-    
     <!-- Dark Mode Toggle -->
     <div class="floating-btn">
-        <button class="btn btn-dark rounded-circle p-3 shadow" id="darkModeToggle">
+        <button class="btn btn-dark p-3 shadow" id="darkModeToggle">
             <i class="bi bi-moon"></i>
         </button>
     </div>
-    
+
     <!-- Back to Top Button -->
     <div class="back-to-top">
-        <button class="btn btn-primary rounded-circle p-3 shadow" id="backToTop">
+        <button class="btn btn-primary bg-warning p-3 shadow" id="backToTop">
             <i class="bi bi-arrow-up"></i>
         </button>
     </div>
 
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
             <a class="navbar-brand" href="#">ISAAC KUAKUA</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -531,23 +1090,14 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#home">Home</a>
+                    <li class="nav-item"><a class="nav-link" href="#home" data-translate="nav_home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about" data-translate="nav_about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills" data-translate="nav_skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects" data-translate="nav_projects">Projects</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#skills">Skills</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#projects">Projects</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#testimonials">Testimonials</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact">Contact</a>
+                    <li class="nav-item"><a class="nav-link" href="#experience"
+                            data-translate="nav_experience">Experience</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact" data-translate="nav_contact">Contact</a>
                     </li>
                 </ul>
             </div>
@@ -560,19 +1110,25 @@
             <div class="shape shape-1"></div>
             <div class="shape shape-2"></div>
         </div>
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1000">
-                    <h1 class="display-4 fw-bold mb-4 typewriter" data-translate="hero_title">Hi, I'm Isaac Kuakua</h1>
-                    <p class="lead mb-4" data-translate="hero_subtitle">A Passionate Developer Specializing in Programming, Design and Cybersecurity</p>
-                    <p class="mb-5" data-translate="hero_description">As you reflect on the corridors of your educational voyage, envision the mosaic of experiences that have woven together to create the intricate fabric of your learning journey.</p>
-                    <div class="d-flex gap-3 flex-wrap">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <h1 class="display-4 fw-bold mb-4" data-translate="hero_title">Hi, I'm Isaac Kuakua</h1>
+                    <p class="lead mb-4" data-translate="hero_subtitle">A Passionate Developer & UI/UX Designer focused
+                        on innovation and performance.</p>
+                    <p class="mb-5" data-translate="hero_description">Currently a Junior Analyst Programmer at We Market
+                        SARL (RDC), I specialize in
+                        backend development, user-centered design, and digital platform optimization using Laravel and
+                        modern frameworks.</p>
+                    <div class="d-flex gap-3 flex-wrap" style="z-index: 1000;">
                         <a href="#projects" class="btn btn-light btn-lg" data-translate="view_work">View My Work</a>
-                        <a href="#contact" class="btn btn-outline-light btn-lg" data-translate="contact_me">Contact Me</a>
+                        <a href="#contact" class="btn btn-outline-light btn-lg" data-translate="contact_me">Contact
+                            Me</a>
                     </div>
                 </div>
-                <div class="col-lg-6 text-center mt-5 mt-lg-0" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="300">
-                    <img src="images/3.jpeg" alt="Isaac Kuakua" class="profile-img img-fluid" style="max-width: 400px;">
+                <div class="col-lg-6 text-center mt-5 mt-lg-0" data-aos="fade-left">
+                    <img src="assets/images/me.png" alt="Isaac Kuakua" class="profile-img img-fluid"
+                        style="max-width: 400px;">
                 </div>
             </div>
         </div>
@@ -581,66 +1137,68 @@
     <!-- About Section -->
     <section id="about" class="section-padding">
         <div class="container">
-            <h2 class="section-title center mb-5" data-translate="about_title">About Me</h2>
-            <div class="row">
-                <div class="col-lg-4 mb-4" data-aos="fade-right" data-aos-duration="800">
-                    <div class="card h-100 shadow border-0">
-                        <img src="images/1.jpg" class="card-img-top" alt="About Isaac">
-                    </div>
-                </div>
-                <div class="col-lg-8" data-aos="fade-left" data-aos-duration="800" data-aos-delay="200">
-                    <div class="card shadow border-0 h-100">
-                        <div class="card-body p-4">
-                            <h3 class="card-title mb-4" data-translate="who_is_isaac">Who is ISAAC KUAKUA?</h3>
-                            <p class="card-text mb-4" data-translate="about_description_1">Hey there! 👋 I'm ISAAC KUAKUA, a final-year Information Technology rockstar with an insatiable appetite for coding and electronics. 🌐 After conquering the realm of industrial informatics and network wizardry for three glorious years, I took my talents to the captivating island of Cyprus, where I'm currently basking in the glory of my fourth year in the IT universe.</p>
-                            
-                            <h4 class="mb-3" data-translate="why_it">Why IT field?</h4>
-                            <p class="card-text mb-4" data-translate="about_description_2">Technology is constantly evolving, and IT professionals often need to engage in continuous learning to stay relevant. If you enjoy learning and adapting to new technologies, just follow me and join us in IT or all other technological fields.</p>
-                            
-                            <h4 class="mb-3" data-translate="why_iot_cyber">Why IoT and Cyber Security?</h4>
-                            <p class="card-text" data-translate="about_description_3">Mainly it was because of IoT and after this semester I got evolve and start enjoying cyber security. Now all I can say is none is safe so let's secure our assets.</p>
+            <h2 class="section-title text-center mb-5" data-translate="about_title">About Me</h2>
+
+            <div class="container my-4">
+                <div class="row">
+                    <!-- Gallery column -->
+                    <div class="col-md-6">
+                        <div class="row g-2">
+                            <div class="col-3">
+                                <img src="assets/images/3.jpeg" class="photo" alt="Photo 1">
+                            </div>
+
+                            <div class="col-6">
+                                <img src="assets/images/2.JPG" class="photo" alt="Photo 3">
+                            </div>
+                            <div class="col-3">
+                                <img src="assets/images/grad.jpg" class="photo" alt="Photo 2">
+                            </div>
+                            <div class="col-6">
+                                <img src="assets/images/smile.JPG" class="photo" alt="Photo 4">
+                            </div>
+                            <div class="col-6">
+                                <img src="assets/images/1.jpg" class="photo" alt="Photo 4">
+                            </div>
+
                         </div>
                     </div>
-                </div>
-            </div>
-            
-            <!-- Stats Section -->
-            <div class="row mt-5 pt-5" data-aos="fade-up" data-aos-duration="800">
-                <div class="col-md-3 col-6 text-center mb-4">
-                    <div class="stats-counter">10+</div>
-                    <p class="text-muted">Projects Completed</p>
-                </div>
-                <div class="col-md-3 col-6 text-center mb-4">
-                    <div class="stats-counter">5+</div>
-                    <p class="text-muted">Years Experience</p>
-                </div>
-                <div class="col-md-3 col-6 text-center mb-4">
-                    <div class="stats-counter">15+</div>
-                    <p class="text-muted">Technologies</p>
-                </div>
-                <div class="col-md-3 col-6 text-center mb-4">
-                    <div class="stats-counter">100%</div>
-                    <p class="text-muted">Client Satisfaction</p>
-                </div>
-            </div>
-            
-            <!-- Education & Experience Timeline -->
-            <div class="row mt-5">
-                <div class="col-12" data-aos="fade-up" data-aos-duration="800">
-                    <h3 class="mb-4 text-center" data-translate="education_experience">Education & Experience</h3>
-                    <div class="timeline">
-                        <div class="timeline-item">
-                            <h5 data-translate="current_education">Current: Final Year IT Student</h5>
-                            <p class="text-muted" data-translate="cyprus_location">Cyprus · 2023-Present</p>
+
+                    <!-- Other content column (optional) -->
+                    <div class="col-md-6" data-aos="fade-left">
+
+                        <div class="about-card">
+                            <div class="about-content">
+                                <h3 class="card-title mb-4" data-translate="who_is_isaac">Who is ISAAC KUAKUA?</h3>
+                                <p data-translate="about_description_1">
+                                    I'm <strong>KUAKUA MATALATALA Isaac</strong> — a developer and UI/UX designer
+                                    combining
+                                    technical expertise with creativity to build digital solutions that perform and
+                                    inspire.
+                                    Currently working as <strong>Junior Analyst Programmer</strong> at
+                                    <strong>We Market SARL</strong> in the Democratic Republic of Congo, I design and
+                                    develop scalable web platforms, focusing on user experience and backend efficiency.
+                                </p>
+                                <p data-translate="about_description_2">
+                                    Previously, I led UI/UX and software development at
+                                    <strong>Illumination Metaverse Group</strong>, where I shaped innovative digital
+                                    products and guided a development team. My academic path took me from
+                                    <strong>Industrial Informatics & Networking</strong> in Kinshasa to a
+                                    <strong>Bachelor's in Information Technology</strong> at Eastern Mediterranean
+                                    University in Cyprus.
+                                </p>
+                                <h4 class="mt-4" data-translate="languages_title">Languages</h4>
+                                <div class="language-list">
+                                    <span class="language-badge"><i class="bi bi-translate me-1"></i> <span
+                                            data-translate="french_language">French – Native</span></span>
+                                    <span class="language-badge"><i class="bi bi-translate me-1"></i> <span
+                                            data-translate="english_language">English – Academic</span></span>
+                                    <span class="language-badge"><i class="bi bi-translate me-1"></i> <span
+                                            data-translate="lingala_language">Lingala – National</span></span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="timeline-item">
-                            <h5 data-translate="previous_education">Industrial Informatics & Networking</h5>
-                            <p class="text-muted" data-translate="previous_duration">3 Years</p>
-                        </div>
-                        <div class="timeline-item">
-                            <h5 data-translate="iot_specialization">IoT & Cybersecurity Specialization</h5>
-                            <p class="text-muted" data-translate="current_focus">Current Focus</p>
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -648,393 +1206,436 @@
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="section-padding bg-light">
+    <section id="skills" class="section-padding">
         <div class="container">
-            <h2 class="section-title text-center mb-5" data-translate="skills_title">Skills</h2>
-            <p class="text-center mb-5" data-translate="skills_subtitle">Here are my technical and professional skills</p>
-            
-            <div class="row g-4">
+            <h2 class="section-title text-center mb-5" data-translate="skills_title">Technical Skills</h2>
+            <p class="text-center mb-5" data-translate="skills_subtitle">A mix of development, design, and analytical
+                skills.</p>
+
+            <div class="row">
                 <!-- Programming Languages -->
-                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-duration="800">
-                    <div class="skill-card">
-                        <div class="card-header text-center">
-                            <i class="bi bi-code-slash fs-1 mb-3"></i>
-                            <h5 class="card-title mb-0" data-translate="programming_languages">Programming</h5>
+                <div class="col-lg-6 mb-5" data-aos="fade-up">
+                    <div class="skill-category">
+                        <h3 class="skill-category-title" data-translate="programming_languages">Programming Languages
+                        </h3>
+
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="bi bi-filetype-php"></i>
+                            </div>
+                            <div class="skill-details">
+                                <div class="skill-name">PHP</div>
+                                <div class="skill-bar ">
+                                    <div class="skill-level green-bar" style="width: 85%"></div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="card-body">
-                            <ul class="list-unstyled">
-                                <li class="mb-3">
-                                    <div class="d-flex justify-content-between mb-1">
-                                        <span>JavaScript</span>
-                                        <span>75%</span>
-                                    </div>
-                                    <div class="progress">
-                                        <div class="progress-bar" role="progressbar" style="width: 75%"></div>
-                                    </div>
-                                </li>
-                                <li class="mb-3">
-                                    <div class="d-flex justify-content-between mb-1">
-                                        <span>Python</span>
-                                        <span>75%</span>
-                                    </div>
-                                    <div class="progress">
-                                        <div class="progress-bar" role="progressbar" style="width: 75%"></div>
-                                    </div>
-                                </li>
-                                <li class="mb-3">
-                                    <div class="d-flex justify-content-between mb-1">
-                                        <span>Java</span>
-                                        <span>75%</span>
-                                    </div>
-                                    <div class="progress">
-                                        <div class="progress-bar" role="progressbar" style="width: 75%"></div>
-                                    </div>
-                                </li>
-                                <li class="mb-3">
-                                    <div class="d-flex justify-content-between mb-1">
-                                        <span>C/C++</span>
-                                        <span>75%</span>
-                                    </div>
-                                    <div class="progress">
-                                        <div class="progress-bar" role="progressbar" style="width: 75%"></div>
-                                    </div>
-                                </li>
-                                <li class="mb-3">
-                                    <div class="d-flex justify-content-between mb-1">
-                                        <span>Swift</span>
-                                        <span>86%</span>
-                                    </div>
-                                    <div class="progress">
-                                        <div class="progress-bar" role="progressbar" style="width: 86%"></div>
-                                    </div>
-                                </li>
-                            </ul>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="bi bi-phone"></i>
+                            </div>
+                            <div class="skill-details">
+                                <div class="skill-name">Dart</div>
+                                <div class="skill-bar ">
+                                    <div class="skill-level green-bar" style="width: 75%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="bi bi-code-slash"></i>
+                            </div>
+                            <div class="skill-details">
+                                <div class="skill-name">Python</div>
+                                <div class="skill-bar ">
+                                    <div class="skill-level green-bar" style="width: 60%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="bi bi-filetype-java"></i>
+                            </div>
+                            <div class="skill-details">
+                                <div class="skill-name">Java</div>
+                                <div class="skill-bar">
+                                    <div class="skill-level green-bar" style="width: 60%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="bi bi-filetype-js"></i>
+                            </div>
+                            <div class="skill-details">
+                                <div class="skill-name">JavaScript</div>
+                                <div class="skill-bar">
+                                    <div class="skill-level green-bar" style="width: 70%"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="bi bi-filetype-html"></i>
+                            </div>
+                            <div class="skill-details">
+                                <div class="skill-name">Html</div>
+                                <div class="skill-bar ">
+                                    <div class="skill-level green-bar" style="width: 90%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="bi bi-filetype-css"></i>
+                            </div>
+                            <div class="skill-details">
+                                <div class="skill-name">Css</div>
+                                <div class="skill-bar">
+                                    <div class="skill-level green-bar" style="width: 96%"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Frameworks & Libraries -->
+                <div class="col-lg-6 mb-5" data-aos="fade-up" data-aos-delay="100">
+                    <div class="skill-category">
+                        <h3 class="skill-category-title" data-translate="frameworks_libraries">Frameworks & Libraries
+                        </h3>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="bi bi-filetype-php"></i>
+                            </div>
+                            <div class="skill-details">
+                                <div class="skill-name">Laravel</div>
+                                <div class="skill-bar">
+                                    <div class="skill-level green-bar" style="width: 88%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="bi bi-phone"></i>
+                            </div>
+                            <div class="skill-details">
+                                <div class="skill-name">Flutter</div>
+                                <div class="skill-bar">
+                                    <div class="skill-level green-bar" style="width: 75%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="bi bi-code-slash"></i>
+                            </div>
+                            <div class="skill-details">
+                                <div class="skill-name">Django</div>
+                                <div class="skill-bar">
+                                    <div class="skill-level green-bar" style="width: 62%"></div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="bi bi-filetype-jsx"></i>
+                            </div>
+                            <div class="skill-details">
+                                <div class="skill-name">React</div>
+                                <div class="skill-bar">
+                                    <div class="skill-level orange-bar" style="width: 38%"></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Web Development -->
-                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
-                    <div class="skill-card">
-                        <div class="card-header text-center">
-                            <i class="bi bi-globe fs-1 mb-3"></i>
-                            <h5 class="card-title mb-0" data-translate="web_development">Web Development</h5>
+
+                <!-- Tools & Technologies -->
+                <div class="col-lg-6 mb-5" data-aos="fade-up" data-aos-delay="200">
+                    <div class="skill-category">
+                        <h3 class="skill-category-title" data-translate="tools_technologies">Tools & Technologies</h3>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="bi bi-palette"></i>
+                            </div>
+                            <div class="skill-details">
+                                <div class="skill-name">Figma</div>
+                                <div class="skill-bar">
+                                    <div class="skill-level green-bar" style="width: 85%"></div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="card-body">
-                            <ul class="list-unstyled">
-                                <li class="mb-3">
-                                    <div class="d-flex justify-content-between mb-1">
-                                        <span>HTML/CSS</span>
-                                        <span>90%</span>
-                                    </div>
-                                    <div class="progress">
-                                        <div class="progress-bar" role="progressbar" style="width: 90%"></div>
-                                    </div>
-                                </li>
-                                <li class="mb-3">
-                                    <div class="d-flex justify-content-between mb-1">
-                                        <span>PHP</span>
-                                        <span>70%</span>
-                                    </div>
-                                    <div class="progress">
-                                        <div class="progress-bar" role="progressbar" style="width: 70%"></div>
-                                    </div>
-                                </li>
-                                <li class="mb-3">
-                                    <div class="d-flex justify-content-between mb-1">
-                                        <span>MySQL</span>
-                                        <span>95%</span>
-                                    </div>
-                                    <div class="progress">
-                                        <div class="progress-bar" role="progressbar" style="width: 95%"></div>
-                                    </div>
-                                </li>
-                                <li class="mb-3">
-                                    <div class="d-flex justify-content-between mb-1">
-                                        <span>MongoDB</span>
-                                        <span>75%</span>
-                                    </div>
-                                    <div class="progress">
-                                        <div class="progress-bar" role="progressbar" style="width: 75%"></div>
-                                    </div>
-                                </li>
-                            </ul>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="bi bi-filetype-psd"></i>
+                            </div>
+                            <div class="skill-details">
+                                <div class="skill-name">Adobe Suite</div>
+                                <div class="skill-bar">
+                                    <div class="skill-level green-bar" style="width: 70%"></div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                
-                <!-- Design & Multimedia -->
-                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
-                    <div class="skill-card">
-                        <div class="card-header text-center">
-                            <i class="bi bi-palette fs-1 mb-3"></i>
-                            <h5 class="card-title mb-0" data-translate="design_multimedia">Design & Multimedia</h5>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="bi bi-tools"></i>
+                            </div>
+                            <div class="skill-details">
+                                <div class="skill-name">Arduino</div>
+                                <div class="skill-bar">
+                                    <div class="skill-level green-bar" style="width: 60%"></div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="card-body">
-                            <ul class="list-unstyled">
-                                <li class="mb-3">
-                                    <div class="d-flex justify-content-between mb-1">
-                                        <span>UI/UX Design</span>
-                                        <span>80%</span>
-                                    </div>
-                                    <div class="progress">
-                                        <div class="progress-bar" role="progressbar" style="width: 80%"></div>
-                                    </div>
-                                </li>
-                                <li class="mb-3">
-                                    <div class="d-flex justify-content-between mb-1">
-                                        <span>Adobe Photoshop</span>
-                                        <span>65%</span>
-                                    </div>
-                                    <div class="progress">
-                                        <div class="progress-bar" role="progressbar" style="width: 65%"></div>
-                                    </div>
-                                </li>
-                                <li class="mb-3">
-                                    <div class="d-flex justify-content-between mb-1">
-                                        <span>Adobe Premiere Pro</span>
-                                        <span>65%</span>
-                                    </div>
-                                    <div class="progress">
-                                        <div class="progress-bar" role="progressbar" style="width: 65%"></div>
-                                    </div>
-                                </li>
-                                <li class="mb-3">
-                                    <div class="d-flex justify-content-between mb-1">
-                                        <span>Adobe Lightroom</span>
-                                        <span>55%</span>
-                                    </div>
-                                    <div class="progress">
-                                        <div class="progress-bar" role="progressbar" style="width: 55%"></div>
-                                    </div>
-                                </li>
-                            </ul>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="bi bi-git"></i>
+                            </div>
+                            <div class="skill-details">
+                                <div class="skill-name">Git / GitHub</div>
+                                <div class="skill-bar">
+                                    <div class="skill-level green-bar" style="width: 67%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="bi bi-kanban"></i>
+                            </div>
+                            <div class="skill-details">
+                                <div class="skill-name">Agile Methodologies</div>
+                                <div class="skill-bar">
+                                    <div class="skill-level green-bar" style="width: 75%"></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Other Skills -->
-                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
-                    <div class="skill-card">
-                        <div class="card-header text-center">
-                            <i class="bi bi-tools fs-1 mb-3"></i>
-                            <h5 class="card-title mb-0" data-translate="other_skills">Other Skills</h5>
+
+                <!-- Specializations -->
+                <div class="col-lg-6 mb-5" data-aos="fade-up" data-aos-delay="300">
+                    <div class="skill-category">
+                        <h3 class="skill-category-title" data-translate="specializations">Specializations</h3>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="bi bi-layout-text-window"></i>
+                            </div>
+                            <div class="skill-details">
+                                <div class="skill-name">UI/UX Design</div>
+                                <div class="skill-bar">
+                                    <div class="skill-level" style="width: 88%"></div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="card-body">
-                            <ul class="list-unstyled">
-                                <li class="mb-3">
-                                    <div class="d-flex justify-content-between mb-1">
-                                        <span>IoT Development</span>
-                                        <span>70%</span>
-                                    </div>
-                                    <div class="progress">
-                                        <div class="progress-bar" role="progressbar" style="width: 70%"></div>
-                                    </div>
-                                </li>
-                                <li class="mb-3">
-                                    <div class="d-flex justify-content-between mb-1">
-                                        <span>Cybersecurity</span>
-                                        <span>75%</span>
-                                    </div>
-                                    <div class="progress">
-                                        <div class="progress-bar" role="progressbar" style="width: 75%"></div>
-                                    </div>
-                                </li>
-                                <li class="mb-3">
-                                    <div class="d-flex justify-content-between mb-1">
-                                        <span>Arduino</span>
-                                        <span>55%</span>
-                                    </div>
-                                    <div class="progress">
-                                        <div class="progress-bar" role="progressbar" style="width: 55%"></div>
-                                    </div>
-                                </li>
-                                <li class="mb-3">
-                                    <div class="d-flex justify-content-between mb-1">
-                                        <span>Microsoft Office</span>
-                                        <span>85%</span>
-                                    </div>
-                                    <div class="progress">
-                                        <div class="progress-bar" role="progressbar" style="width: 85%"></div>
-                                    </div>
-                                </li>
-                            </ul>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="bi bi-server"></i>
+                            </div>
+                            <div class="skill-details">
+                                <div class="skill-name">Backend Development</div>
+                                <div class="skill-bar">
+                                    <div class="skill-level" style="width: 85%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="bi bi-phone"></i>
+                            </div>
+                            <div class="skill-details">
+                                <div class="skill-name">Mobile App Development</div>
+                                <div class="skill-bar">
+                                    <div class="skill-level" style="width: 80%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="bi bi-wifi"></i>
+                            </div>
+                            <div class="skill-details">
+                                <div class="skill-name">Network Systems & IoT</div>
+                                <div class="skill-bar">
+                                    <div class="skill-level" style="width: 75%"></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            
-            <!-- Additional Skills -->
-            <div class="row mt-5" data-aos="fade-up" data-aos-duration="800">
-                <div class="col-12 text-center">
-                    <h4 class="mb-4">Additional Skills & Technologies</h4>
-                    <div class="d-flex flex-wrap justify-content-center">
-                        <span class="skill-badge">Git</span>
-                        <span class="skill-badge">Docker</span>
-                        <span class="skill-badge">AWS</span>
-                        <span class="skill-badge">React</span>
-                        <span class="skill-badge">Node.js</span>
-                        <span class="skill-badge">REST APIs</span>
-                        <span class="skill-badge">Agile Methodologies</span>
-                        <span class="skill-badge">Problem Solving</span>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section-padding">
+        <div class="container">
+            <h2 class="section-title text-center mb-5" data-translate="education_experience">Experience & Education</h2>
+
+            <div class="timeline-enhanced">
+                <div class="timeline-item-enhanced" data-aos="fade-up">
+                    <div class="timeline-content">
+                        <span class="timeline-date">March 2025 – Present</span>
+                        <h5 data-translate="job1_title">Junior Analyst Programmer – We Market SARL (RDC)</h5>
+                        <p data-translate="job1_description">Developing digital service platforms using PHP (Laravel)
+                            with a focus on backend optimization and
+                            user experience.</p>
+                    </div>
+                </div>
+                <div class="timeline-item-enhanced" data-aos="fade-up" data-aos-delay="100">
+                    <div class="timeline-content">
+                        <span class="timeline-date">October 2024 – February 2025</span>
+                        <h5 data-translate="job2_title">UI/UX Lead & Software Developer – Illumination Metaverse Group
+                        </h5>
+                        <p data-translate="job2_description">Led a design and development team, creating user-focused
+                            digital experiences and improving
+                            technical workflows.</p>
+                    </div>
+                </div>
+                <!-- <div class="timeline-item-enhanced" data-aos="fade-up" data-aos-delay="200">
+                    <div class="timeline-content">
+                        <span class="timeline-date">2024</span>
+                        <h5 data-translate="job3_title">Technician – Arkin Hotel / Kaya Arthemis Hotel</h5>
+                        <p data-translate="job3_description">Provided technical maintenance and IT infrastructure
+                            support ensuring seamless digital
+                            operations.</p>
+                    </div>
+                </div> -->
+                <div class="timeline-item-enhanced" data-aos="fade-up" data-aos-delay="300">
+                    <div class="timeline-content">
+                        <span class="timeline-date">2021 – 2022</span>
+                        <h5 data-translate="job4_title">Technician – Karakas Prefabrik (Cyprus)</h5>
+                        <p data-translate="job4_description">Installed and configured network systems in prefabricated
+                            buildings, ensuring stable internal IT
+                            systems.</p>
                     </div>
                 </div>
             </div>
+
+            <h3 class="mt-5 mb-4 text-center" data-translate="education_title">Education</h3>
+            <ul class="education-list">
+                <li class="education-item" data-aos="fade-up">
+                    <div class="education-icon">
+                        <i class="bi bi-mortarboard"></i>
+                    </div>
+                    <strong data-translate="current_education">Bachelor's in Information Technology</strong> – Eastern
+                    Mediterranean University, Cyprus
+                    (2020–2024)
+                </li>
+                <li class="education-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="education-icon">
+                        <i class="bi bi-award"></i>
+                    </div>
+                    <strong data-translate="previous_education">Diploma in Industrial Informatics & Networks</strong> –
+                    ISPT Kinshasa (2016–2019)
+                </li>
+                <li class="education-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="education-icon">
+                        <i class="bi bi-book"></i>
+                    </div>
+                    <strong data-translate="high_school_diploma">High School Diploma in Industrial Electronics</strong>
+                    – Collège Ntetembwa, Matadi
+                    (2013–2016)
+                </li>
+            </ul>
         </div>
     </section>
 
     <!-- Projects Section -->
     <section id="projects" class="section-padding">
         <div class="container">
-            <h2 class="section-title text-center mb-5" data-translate="projects_title">My Projects</h2>
-            <p class="text-center mb-5" data-translate="projects_subtitle">Check out some of my recent work</p>
-            
+            <h2 class="section-title text-center mb-5" data-translate="projects_title">Featured Projects</h2>
+            <p class="text-center mb-5" data-translate="projects_subtitle">Some of my latest professional and academic
+                projects</p>
             <div class="row g-4">
-                <!-- Project 1 -->
-                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-duration="800">
-                    <div class="project-card">
-                        <div class="position-relative overflow-hidden">
-                            <img src="images/cybersecurity.png" class="card-img-top project-img" alt="Cybersecurity Project">
-                            <div class="project-overlay">
-                                <a href="pages/security.html" class="btn btn-light btn-sm">View Details</a>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up">
+                    <div class="project-card-enhanced">
+                        <div class="project-img-container">
+                            <img src="assets/images/wemarket.png" class="project-img-enhanced" alt="We Market Project">
+                            <div class="project-overlay-enhanced">
+                                <a href="https://www.wemarket.pro/" class="btn btn-light"
+                                    data-translate="view_details">View Details</a>
                             </div>
                         </div>
-                        <div class="card-body">
-                            <h5 class="card-title" data-translate="cybersecurity_project">Cybersecurity Solutions</h5>
-                            <p class="card-text" data-translate="cybersecurity_description">Developed comprehensive security protocols and vulnerability assessments for network systems.</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <a href="pages/security.html" class="btn btn-primary btn-sm" data-translate="view_project">View Project</a>
-                                <div class="text-muted">
-                                    <i class="bi bi-calendar me-1"></i>
-                                    <small>2023</small>
-                                </div>
+                        <div class="project-content">
+                            <h5 class="card-title" data-translate="cybersecurity_project">We Market Digital Platform
+                            </h5>
+                            <br>
+                            <p data-translate="cybersecurity_description">Development of a scalable web application for
+                                digital service management using Laravel
+                                and MySQL.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Laravel</span>
+                                <span class="project-tag">PHP</span>
+                                <span class="project-tag">MySQL</span>
+                                <span class="project-tag">Bootstrap</span>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Project 2 -->
-                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
-                    <div class="project-card">
-                        <div class="position-relative overflow-hidden">
-                            <img src="images/iot.jpeg" class="card-img-top project-img" alt="IoT Project">
-                            <div class="project-overlay">
-                                <a href="pages/iot.html" class="btn btn-light btn-sm">View Details</a>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title" data-translate="iot_project">IoT Smart Home System</h5>
-                            <p class="card-text" data-translate="iot_description">Designed and implemented a connected home automation system using Arduino and sensors.</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <a href="pages/iot.html" class="btn btn-primary btn-sm" data-translate="view_project">View Project</a>
-                                <div class="text-muted">
-                                    <i class="bi bi-calendar me-1"></i>
-                                    <small>2023</small>
-                                </div>
-                            </div>
+                            <!-- <div class="project-links">
+                                <a href="#" class="project-link"><i class="bi bi-github"></i> <span
+                                        data-translate="code_link">Code</span></a>
+                                <a href="#" class="project-link"><i class="bi bi-eye"></i> <span
+                                        data-translate="demo_link">Demo</span></a>
+                            </div> -->
                         </div>
                     </div>
                 </div>
-                
-                <!-- Project 3 -->
-                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
-                    <div class="project-card">
-                        <div class="position-relative overflow-hidden">
-                            <img src="images/ui.png" class="card-img-top project-img" alt="UI/UX Project">
-                            <div class="project-overlay">
-                                <a href="#" class="btn btn-light btn-sm">View Details</a>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="project-card-enhanced">
+                        <div class="project-img-container">
+                            <img src="assets/images/ui.png" class="project-img-enhanced" alt="Illumination Metaverse">
+                            <div class="project-overlay-enhanced">
+                                <a href="#" class="btn btn-light" data-translate="view_details">View Details</a>
                             </div>
                         </div>
-                        <div class="card-body">
-                            <h5 class="card-title" data-translate="ui_project">UI/UX Design Portfolio</h5>
-                            <p class="card-text" data-translate="ui_description">Created intuitive user interfaces and experiences for various web and mobile applications.</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <a href="#" class="btn btn-primary btn-sm" data-translate="view_project">View Project</a>
-                                <div class="text-muted">
-                                    <i class="bi bi-calendar me-1"></i>
-                                    <small>2022</small>
-                                </div>
+                        <div class="project-content">
+                            <h5 class="card-title" data-translate="ui_project">Illumination Metaverse</h5>
+                            <p data-translate="ui_description">Led UI/UX and frontend design for a metaverse-inspired
+                                experience, focusing on immersive
+                                interfaces.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Figma</span>
+                                <!-- <span class="project-tag">React</span>
+                                <span class="project-tag">Three.js</span> -->
+                                <span class="project-tag">UI/UX</span>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="text-center mt-5">
-                <a href="#" class="btn btn-outline-primary">View All Projects</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="section-padding bg-light">
-        <div class="container">
-            <h2 class="section-title text-center mb-5">Testimonials</h2>
-            <p class="text-center mb-5">What clients and colleagues say about my work</p>
-            
-            <div class="row g-4">
-                <div class="col-md-4" data-aos="fade-up" data-aos-duration="800">
-                    <div class="testimonial-card">
-                        <div class="card-body p-4">
-                            <div class="d-flex align-items-center mb-3">
-                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client" class="rounded-circle me-3" width="50">
-                                <div>
-                                    <h6 class="mb-0">John Smith</h6>
-                                    <small class="text-muted">Project Manager</small>
-                                </div>
-                            </div>
-                            <p class="card-text">"Isaac delivered exceptional work on our cybersecurity project. His attention to detail and problem-solving skills are remarkable."</p>
-                            <div class="text-warning">
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                            </div>
+                            <!-- <div class="project-links">
+                                <a href="#" class="project-link"><i class="bi bi-github"></i> <span
+                                        data-translate="code_link">Code</span></a>
+                                <a href="#" class="project-link"><i class="bi bi-eye"></i> <span
+                                        data-translate="demo_link">Demo</span></a>
+                            </div> -->
                         </div>
                     </div>
                 </div>
-                
-                <div class="col-md-4" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
-                    <div class="testimonial-card">
-                        <div class="card-body p-4">
-                            <div class="d-flex align-items-center mb-3">
-                                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Client" class="rounded-circle me-3" width="50">
-                                <div>
-                                    <h6 class="mb-0">Sarah Johnson</h6>
-                                    <small class="text-muted">UI/UX Designer</small>
-                                </div>
-                            </div>
-                            <p class="card-text">"Working with Isaac was a pleasure. His technical expertise and creative approach resulted in a stunning final product."</p>
-                            <div class="text-warning">
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-half"></i>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="project-card-enhanced">
+                        <div class="project-img-container">
+                            <img src="assets/images/iot.jpeg" class="project-img-enhanced" alt="IoT Project">
+                            <div class="project-overlay-enhanced">
+                                <a href="#" class="btn btn-light" data-translate="view_details">View Details</a>
                             </div>
                         </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-4" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
-                    <div class="testimonial-card">
-                        <div class="card-body p-4">
-                            <div class="d-flex align-items-center mb-3">
-                                <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="Client" class="rounded-circle me-3" width="50">
-                                <div>
-                                    <h6 class="mb-0">Michael Brown</h6>
-                                    <small class="text-muted">Tech Lead</small>
-                                </div>
+                        <div class="project-content">
+                            <h5 class="card-title" data-translate="iot_project">IoT Automation System</h5>
+                            <p data-translate="iot_description">Designed and deployed IoT-based home automation
+                                prototypes integrating Arduino and sensor
+                                systems.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Arduino</span>
+                                <span class="project-tag">Python</span>
+                                <span class="project-tag">IoT</span>
+                                <span class="project-tag">Sensors</span>
                             </div>
-                            <p class="card-text">"Isaac's IoT solution exceeded our expectations. He's a talented developer with a bright future in technology."</p>
-                            <div class="text-warning">
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                                <i class="bi bi-star-fill"></i>
-                            </div>
+                            <!-- <div class="project-links">
+                                <a href="#" class="project-link"><i class="bi bi-github"></i> <span
+                                        data-translate="code_link">Code</span></a>
+                                <a href="#" class="project-link"><i class="bi bi-eye"></i> <span
+                                        data-translate="demo_link">Demo</span></a>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -1046,62 +1647,56 @@
     <section id="contact" class="section-padding contact-section">
         <div class="container">
             <h2 class="section-title text-center mb-5" data-translate="contact_title">Contact Me</h2>
-            <p class="text-center mb-5" data-translate="contact_subtitle">Let's work together on your next project</p>
-            
+            <p class="text-center mb-5" data-translate="contact_subtitle">Let's collaborate and build something amazing.
+            </p>
+
             <div class="row justify-content-center">
-                <div class="col-lg-8" data-aos="fade-up" data-aos-duration="800">
-                    <form class="row g-4 bg-white p-4 rounded shadow">
+                <div class="col-lg-8" data-aos="fade-up">
+                    <form id="contactForm" class="row g-4 p-4 rounded shadow">
                         <div class="col-md-6">
                             <label for="name" class="form-label" data-translate="name_label">Your Name</label>
-                            <input type="text" class="form-control" id="name" required>
+                            <input type="text" class="form-control" id="name" name="name" required>
                         </div>
+
                         <div class="col-md-6">
                             <label for="email" class="form-label" data-translate="email_label">Your Email</label>
-                            <input type="email" class="form-control" id="email" required>
+                            <input type="email" class="form-control" id="email" name="email" required>
                         </div>
+
                         <div class="col-12">
                             <label for="subject" class="form-label" data-translate="subject_label">Subject</label>
-                            <input type="text" class="form-control" id="subject" required>
+                            <input type="text" class="form-control" id="subject" name="subject" required>
                         </div>
+
                         <div class="col-12">
                             <label for="message" class="form-label" data-translate="message_label">Your Message</label>
-                            <textarea class="form-control" id="message" rows="5" required></textarea>
+                            <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
                         </div>
+
                         <div class="col-12 text-center">
-                            <button type="submit" class="btn btn-primary btn-lg" data-translate="send_message">Send Message</button>
+                            <button type="submit" class="btn btn-primary btn-lg" data-translate="send_message">
+                                Send Message
+                            </button>
                         </div>
                     </form>
                 </div>
             </div>
-            
-            <!-- Contact Info -->
-            <div class="row mt-5">
-                <div class="col-md-4 text-center mb-4" data-aos="fade-up" data-aos-duration="800">
-                    <div class="card border-0 bg-transparent">
-                        <div class="card-body">
-                            <i class="bi bi-envelope fs-1 text-primary mb-3"></i>
-                            <h5 data-translate="email_contact">Email</h5>
-                            <p>isaac@example.com</p>
-                        </div>
-                    </div>
+
+            <div class="row mt-5 text-center">
+                <div class="col-md-4">
+                    <i class="bi bi-envelope fs-1 text-primary mb-3"></i>
+                    <h5 data-translate="email_contact">Email</h5>
+                    <p>kuakuaisa@gmail.com</p>
                 </div>
-                <div class="col-md-4 text-center mb-4" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
-                    <div class="card border-0 bg-transparent">
-                        <div class="card-body">
-                            <i class="bi bi-telephone fs-1 text-primary mb-3"></i>
-                            <h5 data-translate="phone_contact">Phone</h5>
-                            <p>+123 456 7890</p>
-                        </div>
-                    </div>
+                <div class="col-md-4">
+                    <i class="bi bi-telephone fs-1 text-primary mb-3"></i>
+                    <h5 data-translate="phone_contact">Phone</h5>
+                    <p>+243 897 121 420</p>
                 </div>
-                <div class="col-md-4 text-center mb-4" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
-                    <div class="card border-0 bg-transparent">
-                        <div class="card-body">
-                            <i class="bi bi-geo-alt fs-1 text-primary mb-3"></i>
-                            <h5 data-translate="location_contact">Location</h5>
-                            <p data-translate="cyprus_location_full">Cyprus</p>
-                        </div>
-                    </div>
+                <div class="col-md-4">
+                    <i class="bi bi-geo-alt fs-1 text-primary mb-3"></i>
+                    <h5 data-translate="location_contact">Location</h5>
+                    <p data-translate="cyprus_location_full">11 Mokaria, Yolo-Nord, RDC</p>
                 </div>
             </div>
         </div>
@@ -1109,19 +1704,14 @@
 
     <!-- Footer -->
     <footer class="bg-dark text-light py-5">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                    <p class="mb-0" data-translate="copyright">© 2024 ISAAC KUAKUA – All Rights Reserved.</p>
-                </div>
-                <div class="col-md-6 text-center text-md-end">
-                    <div class="social-links">
-                        <a href="#" class="social-icon"><i class="bi bi-linkedin"></i></a>
-                        <a href="#" class="social-icon"><i class="bi bi-github"></i></a>
-                        <a href="#" class="social-icon"><i class="bi bi-twitter"></i></a>
-                        <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
-                    </div>
-                </div>
+        <div class="container text-center">
+            <p class="mb-3" data-translate="copyright">© 2025 ISAAC KUAKUA – All Rights Reserved.</p>
+            <div class="social-links">
+                <a href="https://linkedin.com/in/isaac-kuakua-3b2252324" class="social-icon"><i
+                        class="bi bi-linkedin"></i></a>
+                <a href="#" class="social-icon"><i class="bi bi-github"></i></a>
+                <a href="#" class="social-icon"><i class="bi bi-twitter"></i></a>
+                <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
             </div>
         </div>
     </footer>
@@ -1130,7 +1720,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- AOS Animation Library -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
     <!-- Custom JS -->
     <script>
         // Initialize AOS
@@ -1139,23 +1730,23 @@
             once: true,
             offset: 100
         });
-        
+
         // Loading Screen
-        window.addEventListener('load', function() {
-            setTimeout(function() {
+        window.addEventListener('load', function () {
+            setTimeout(function () {
                 document.getElementById('loading').style.display = 'none';
             }, 1000);
         });
-        
+
         // Navbar scroll effect
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', function () {
             const navbar = document.querySelector('.navbar');
             if (window.scrollY > 50) {
                 navbar.classList.add('scrolled');
             } else {
                 navbar.classList.remove('scrolled');
             }
-            
+
             // Back to top button
             const backToTop = document.querySelector('.back-to-top');
             if (window.scrollY > 300) {
@@ -1164,17 +1755,17 @@
                 backToTop.classList.remove('show');
             }
         });
-        
+
         // Back to top functionality
-        document.getElementById('backToTop').addEventListener('click', function() {
+        document.getElementById('backToTop').addEventListener('click', function () {
             window.scrollTo({
                 top: 0,
                 behavior: 'smooth'
             });
         });
-        
+
         // Dark Mode Toggle
-        document.getElementById('darkModeToggle').addEventListener('click', function() {
+        document.getElementById('darkModeToggle').addEventListener('click', function () {
             document.body.classList.toggle('dark-mode');
             const icon = this.querySelector('i');
             if (document.body.classList.contains('dark-mode')) {
@@ -1187,17 +1778,17 @@
                 localStorage.setItem('darkMode', 'disabled');
             }
         });
-        
+
         // Check for saved dark mode preference
         if (localStorage.getItem('darkMode') === 'enabled') {
             document.body.classList.add('dark-mode');
             document.getElementById('darkModeToggle').querySelector('i').classList.remove('bi-moon');
             document.getElementById('darkModeToggle').querySelector('i').classList.add('bi-sun');
         }
-        
+
         // Animate progress bars when they come into view
         const progressBars = document.querySelectorAll('.progress-bar');
-        
+
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -1209,186 +1800,361 @@
                 }
             });
         }, { threshold: 0.5 });
-        
+
         progressBars.forEach(bar => {
             observer.observe(bar);
         });
-        
-        // Language Translation
+
+        // 🌍 Multilingual Translations (EN / FR / ES / LN)
         const translations = {
             en: {
-                hero_title: "Hi, I'm Isaac Kuakua",
-                hero_subtitle: "A Passionate Developer Specializing in Programming, Design and Cybersecurity",
-                hero_description: "As you reflect on the corridors of your educational voyage, envision the mosaic of experiences that have woven together to create the intricate fabric of your learning journey.",
-                view_work: "View My Work",
-                contact_me: "Contact Me",
-                about_title: "About Me",
-                who_is_isaac: "Who is ISAAC KUAKUA?",
-                about_description_1: "Hey there! 👋 I'm ISAAC KUAKUA, a final-year Information Technology rockstar with an insatiable appetite for coding and electronics. 🌐 After conquering the realm of industrial informatics and network wizardry for three glorious years, I took my talents to the captivating island of Cyprus, where I'm currently basking in the glory of my fourth year in the IT universe.",
-                why_it: "Why IT field?",
-                about_description_2: "Technology is constantly evolving, and IT professionals often need to engage in continuous learning to stay relevant. If you enjoy learning and adapting to new technologies, just follow me and join us in IT or all other technological fields.",
-                why_iot_cyber: "Why IoT and Cyber Security?",
-                about_description_3: "Mainly it was because of IoT and after this semester I got evolve and start enjoying cyber security. Now all I can say is none is safe so let's secure our assets.",
-                education_experience: "Education & Experience",
-                current_education: "Current: Final Year IT Student",
-                cyprus_location: "Cyprus · 2023-Present",
-                previous_education: "Industrial Informatics & Networking",
-                previous_duration: "3 Years",
-                iot_specialization: "IoT & Cybersecurity Specialization",
-                current_focus: "Current Focus",
-                skills_title: "Skills",
-                skills_subtitle: "Here are my technical and professional skills",
-                programming_languages: "Programming",
-                web_development: "Web Development",
-                design_multimedia: "Design & Multimedia",
-                other_skills: "Other Skills",
-                projects_title: "My Projects",
-                projects_subtitle: "Check out some of my recent work",
-                cybersecurity_project: "Cybersecurity Solutions",
-                cybersecurity_description: "Developed comprehensive security protocols and vulnerability assessments for network systems.",
-                iot_project: "IoT Smart Home System",
-                iot_description: "Designed and implemented a connected home automation system using Arduino and sensors.",
-                ui_project: "UI/UX Design Portfolio",
-                ui_description: "Created intuitive user interfaces and experiences for various web and mobile applications.",
-                view_project: "View Project",
-                contact_title: "Contact Me",
-                contact_subtitle: "Let's work together on your next project",
-                name_label: "Your Name",
-                email_label: "Your Email",
-                subject_label: "Subject",
-                message_label: "Your Message",
-                send_message: "Send Message",
-                email_contact: "Email",
-                phone_contact: "Phone",
-                location_contact: "Location",
-                cyprus_location_full: "Cyprus",
-                copyright: "© 2024 ISAAC KUAKUA – All Rights Reserved."
+                "nav_home": "Home",
+                "nav_about": "About",
+                "nav_skills": "Skills",
+                "nav_projects": "Projects",
+                "nav_experience": "Experience",
+                "nav_contact": "Contact",
+
+                "hero_title": "Hi, I'm Isaac Kuakua",
+                "hero_subtitle": "A Passionate Developer & UI/UX Designer focused on innovation and performance.",
+                "hero_description": "Currently a Junior Analyst Programmer at We Market SARL (RDC), I specialize in backend development, user-centered design, and digital platform optimization using Laravel and modern frameworks.",
+                "view_work": "View My Work",
+                "contact_me": "Contact Me",
+
+                "about_title": "About Me",
+                "who_is_isaac": "Who is ISAAC KUAKUA?",
+                "about_description_1": "I'm KUAKUA MATALATALA Isaac — a developer and UI/UX designer combining technical expertise with creativity to build digital solutions that perform and inspire. Currently working as Junior Analyst Programmer at We Market SARL in the Democratic Republic of Congo, I design and develop scalable web platforms, focusing on user experience and backend efficiency.",
+                "about_description_2": "Previously, I led UI/UX and software development at Illumination Metaverse Group, where I shaped innovative digital products and guided a development team. My academic path took me from Industrial Informatics & Networking in Kinshasa to a Bachelor's in Information Technology at Eastern Mediterranean University in Cyprus.",
+                "languages_title": "Languages",
+                "french_language": "French – Native",
+                "english_language": "English – Academic",
+                "lingala_language": "Lingala – National",
+
+                "skills_title": "Technical Skills",
+                "skills_subtitle": "A mix of development, design, and analytical skills.",
+                "programming_languages": "Programming Languages",
+                "frameworks_libraries": "Frameworks & Libraries",
+                "tools_technologies": "Tools & Technologies",
+                "specializations": "Specializations",
+
+                "projects_title": "Featured Projects",
+                "projects_subtitle": "Some of my latest professional and academic projects",
+                "cybersecurity_project": "We Market Digital Platform",
+                "cybersecurity_description": "Development of a scalable web application for digital service management using Laravel and MySQL.",
+                "ui_project": "Illumination Metaverse",
+                "ui_description": "Led UI/UX and frontend design for a metaverse-inspired experience, focusing on immersive interfaces.",
+                "iot_project": "IoT Automation System",
+                "iot_description": "Designed and deployed IoT-based home automation prototypes integrating Arduino and sensor systems.",
+                "view_details": "View Details",
+                "code_link": "Code",
+                "demo_link": "Demo",
+
+                "education_experience": "Experience & Education",
+                "job1_title": "Junior Analyst Programmer – We Market SARL (RDC)",
+                "job1_description": "Developing digital service platforms using PHP (Laravel) with a focus on backend optimization and user experience.",
+                "job2_title": "UI/UX Lead & Software Developer – Illumination Metaverse Group",
+                "job2_description": "Led a design and development team, creating user-focused digital experiences and improving technical workflows.",
+                "job3_title": "Technician – Arkin Hotel / Kaya Arthemis Hotel",
+                "job3_description": "Provided technical maintenance and IT infrastructure support ensuring seamless digital operations.",
+                "job4_title": "Technician – Karakas Prefabrik (Cyprus)",
+                "job4_description": "Installed and configured network systems in prefabricated buildings, ensuring stable internal IT systems.",
+                "education_title": "Education",
+                "current_education": "Bachelor's in Information Technology",
+                "previous_education": "Industrial Informatics & Networks",
+                "high_school_diploma": "High School Diploma in Industrial Electronics",
+
+                "contact_title": "Contact Me",
+                "contact_subtitle": "Let's collaborate and build something amazing.",
+                "name_label": "Your Name",
+                "email_label": "Your Email",
+                "subject_label": "Subject",
+                "message_label": "Your Message",
+                "send_message": "Send Message",
+                "email_contact": "Email",
+                "phone_contact": "Phone",
+                "location_contact": "Location",
+                "cyprus_location_full": "11 Mokaria, Yolo-Nord, RDC",
+                "copyright": "© 2025 ISAAC KUAKUA – All Rights Reserved."
             },
-            es: {
-                hero_title: "Hola, soy Isaac Kuakua",
-                hero_subtitle: "Un Desarrollador Apasionado Especializado en Programación, Diseño y Ciberseguridad",
-                hero_description: "Mientras reflexionas sobre los corredores de tu viaje educativo, visualiza el mosaico de experiencias que se han entrelazado para crear el intrincado tejido de tu trayecto de aprendizaje.",
-                view_work: "Ver Mi Trabajo",
-                contact_me: "Contáctame",
-                about_title: "Sobre Mí",
-                who_is_isaac: "¿Quién es ISAAC KUAKUA?",
-                about_description_1: "¡Hola! 👋 Soy ISAAC KUAKUA, una superestrella de último año de Tecnología de la Información con un apetito insaciable por la codificación y la electrónica. 🌐 Después de conquistar el reino de la informática industrial y la magia de redes durante tres gloriosos años, llevé mis talentos a la cautivadora isla de Chipre, donde actualmente me deleito en la gloria de mi cuarto año en el universo de TI.",
-                why_it: "¿Por qué el campo de TI?",
-                about_description_2: "La tecnología evoluciona constantemente, y los profesionales de TI a menudo necesitan participar en un aprendizaje continuo para mantenerse relevantes. Si disfrutas aprender y adaptarte a nuevas tecnologías, sígueme y únete a nosotros en TI o en todos los demás campos tecnológicos.",
-                why_iot_cyber: "¿Por qué IoT y Ciberseguridad?",
-                about_description_3: "Principalmente fue por IoT y después de este semestre evolucioné y comencé a disfrutar de la ciberseguridad. Ahora todo lo que puedo decir es que nadie está a salvo, así que aseguremos nuestros activos.",
-                education_experience: "Educación y Experiencia",
-                current_education: "Actual: Estudiante de Último Año de TI",
-                cyprus_location: "Chipre · 2023-Presente",
-                previous_education: "Informática Industrial y Redes",
-                previous_duration: "3 Años",
-                iot_specialization: "Especialización en IoT y Ciberseguridad",
-                current_focus: "Enfoque Actual",
-                skills_title: "Habilidades",
-                skills_subtitle: "Aquí están mis habilidades técnicas y profesionales",
-                programming_languages: "Programación",
-                web_development: "Desarrollo Web",
-                design_multimedia: "Diseño y Multimedia",
-                other_skills: "Otras Habilidades",
-                projects_title: "Mis Proyectos",
-                projects_subtitle: "Echa un vistazo a algunos de mis trabajos recientes",
-                cybersecurity_project: "Soluciones de Ciberseguridad",
-                cybersecurity_description: "Desarrollé protocolos de seguridad integrales y evaluaciones de vulnerabilidad para sistemas de red.",
-                iot_project: "Sistema de Hogar Inteligente IoT",
-                iot_description: "Diseñé e implementé un sistema de automatización del hogar conectado utilizando Arduino y sensores.",
-                ui_project: "Portafolio de Diseño UI/UX",
-                ui_description: "Creé interfaces de usuario y experiencias intuitivas para varias aplicaciones web y móviles.",
-                view_project: "Ver Proyecto",
-                contact_title: "Contáctame",
-                contact_subtitle: "Trabajemos juntos en tu próximo proyecto",
-                name_label: "Tu Nombre",
-                email_label: "Tu Correo Electrónico",
-                subject_label: "Asunto",
-                message_label: "Tu Mensaje",
-                send_message: "Enviar Mensaje",
-                email_contact: "Correo Electrónico",
-                phone_contact: "Teléfono",
-                location_contact: "Ubicación",
-                cyprus_location_full: "Chipre",
-                copyright: "© 2024 ISAAC KUAKUA – Todos los derechos reservados."
-            },
+
             fr: {
-                hero_title: "Bonjour, je suis Isaac Kuakua",
-                hero_subtitle: "Un Développeur Passionné Spécialisé en Programmation, Design et Cybersécurité",
-                hero_description: "En réfléchissant aux couloirs de votre voyage éducatif, imaginez la mosaïque d'expériences qui se sont tissées pour créer le tissu complexe de votre parcours d'apprentissage.",
-                view_work: "Voir Mon Travail",
-                contact_me: "Me Contacter",
-                about_title: "À Propos de Moi",
-                who_is_isaac: "Qui est ISAAC KUAKUA ?",
-                about_description_1: "Salut ! 👋 Je suis ISAAC KUAKUA, une rockstar en dernière année de Technologie de l'Information avec un appétit insatiable pour la programmation et l'électronique. 🌐 Après avoir conquis le domaine de l'informatique industrielle et de la magie des réseaux pendant trois glorieuses années, j'ai apporté mes talents à la captivante île de Chypre, où je profite actuellement de la gloire de ma quatrième année dans l'univers des TI.",
-                why_it: "Pourquoi le domaine des TI ?",
-                about_description_2: "La technologie évolue constamment, et les professionnels des TI doivent souvent s'engager dans un apprentissage continu pour rester pertinents. Si vous aimez apprendre et vous adapter aux nouvelles technologies, suivez-moi et rejoignez-nous dans les TI ou tous les autres domaines technologiques.",
-                why_iot_cyber: "Pourquoi l'IoT et la Cybersécurité ?",
-                about_description_3: "Principalement, c'était à cause de l'IoT et après ce semestre, j'ai évolué et commencé à apprécier la cybersécurité. Maintenant, tout ce que je peux dire, c'est que personne n'est en sécurité, alors sécurisons nos actifs.",
-                education_experience: "Éducation et Expérience",
-                current_education: "Actuel : Étudiant en Dernière Année de TI",
-                cyprus_location: "Chypre · 2023-Présent",
-                previous_education: "Informatique Industrielle et Réseaux",
-                previous_duration: "3 Ans",
-                iot_specialization: "Spécialisation IoT et Cybersécurité",
-                current_focus: "Focus Actuel",
-                skills_title: "Compétences",
-                skills_subtitle: "Voici mes compétences techniques et professionnelles",
-                programming_languages: "Programmation",
-                web_development: "Développement Web",
-                design_multimedia: "Design et Multimédia",
-                other_skills: "Autres Compétences",
-                projects_title: "Mes Projets",
-                projects_subtitle: "Découvrez certains de mes travaux récents",
-                cybersecurity_project: "Solutions de Cybersécurité",
-                cybersecurity_description: "Développé des protocoles de sécurité complets et des évaluations de vulnérabilité pour les systèmes réseau.",
-                iot_project: "Système de Maison Intelligente IoT",
-                iot_description: "Conçu et mis en œuvre un système d'automatisation domestique connecté utilisant Arduino et des capteurs.",
-                ui_project: "Portfolio de Conception UI/UX",
-                ui_description: "Créé des interfaces utilisateur et des expériences intuitives pour diverses applications Web et mobiles.",
-                view_project: "Voir le Projet",
-                contact_title: "Me Contacter",
-                contact_subtitle: "Travaillons ensemble sur votre prochain projet",
-                name_label: "Votre Nom",
-                email_label: "Votre Email",
-                subject_label: "Sujet",
-                message_label: "Votre Message",
-                send_message: "Envoyer le Message",
-                email_contact: "Email",
-                phone_contact: "Téléphone",
-                location_contact: "Localisation",
-                cyprus_location_full: "Chypre",
-                copyright: "© 2024 ISAAC KUAKUA – Tous droits réservés."
+                "nav_home": "Accueil",
+                "nav_about": "À propos",
+                "nav_skills": "Compétences",
+                "nav_projects": "Projets",
+                "nav_experience": "Expérience",
+                "nav_contact": "Contact",
+
+                "hero_title": "Bonjour, je suis Isaac Kuakua",
+                "hero_subtitle": "Développeur passionné & Designer UI/UX axé sur l'innovation et la performance.",
+                "hero_description": "Actuellement Analyste Programmeur Junior chez We Market SARL (RDC), je me spécialise dans le développement backend, la conception centrée sur l'utilisateur et l'optimisation des plateformes numériques utilisant Laravel et des frameworks modernes.",
+                "view_work": "Voir mon travail",
+                "contact_me": "Me contacter",
+
+                "about_title": "À propos de moi",
+                "who_is_isaac": "Qui est ISAAC KUAKUA ?",
+                "about_description_1": "Je suis KUAKUA MATALATALA Isaac — un développeur et designer UI/UX combinant expertise technique et créativité pour construire des solutions numériques performantes et inspirantes. Actuellement Analyste Programmeur Junior chez We Market SARL en République Démocratique du Congo, je conçois et développe des plateformes web évolutives, en me concentrant sur l'expérience utilisateur et l'efficacité backend.",
+                "about_description_2": "Précédemment, j'ai dirigé le développement UI/UX et logiciel chez Illumination Metaverse Group, où j'ai façonné des produits numériques innovants et guidé une équipe de développement. Mon parcours académique m'a mené de l'Informatique Industrielle et Réseaux à Kinshasa à une Licence en Technologies de l'Information à l'Université de la Méditerranée Orientale à Chypre.",
+                "languages_title": "Langues",
+                "french_language": "Français – Natif",
+                "english_language": "Anglais – Académique",
+                "lingala_language": "Lingala – National",
+
+                "skills_title": "Compétences techniques",
+                "skills_subtitle": "Un mélange de compétences en développement, design et analyse.",
+                "programming_languages": "Langages de programmation",
+                "frameworks_libraries": "Frameworks et bibliothèques",
+                "tools_technologies": "Outils et technologies",
+                "specializations": "Spécialisations",
+
+                "projects_title": "Projets en vedette",
+                "projects_subtitle": "Certains de mes derniers projets professionnels et académiques",
+                "cybersecurity_project": "Plateforme numérique We Market",
+                "cybersecurity_description": "Développement d'une application web évolutive pour la gestion de services numériques utilisant Laravel et MySQL.",
+                "ui_project": "Illumination Metaverse",
+                "ui_description": "Dirigé la conception UI/UX et frontend pour une expérience inspirée du métavers, en mettant l'accent sur des interfaces immersives.",
+                "iot_project": "Système d'automatisation IoT",
+                "iot_description": "Conçu et déployé des prototypes d'automatisation domestique basés sur l'IoT intégrant Arduino et des systèmes de capteurs.",
+                "view_details": "Voir les détails",
+                "code_link": "Code",
+                "demo_link": "Démo",
+
+                "education_experience": "Expérience et éducation",
+                "job1_title": "Analyste Programmeur Junior – We Market SARL (RDC)",
+                "job1_description": "Développement de plateformes de services numériques utilisant PHP (Laravel) avec un accent sur l'optimisation backend et l'expérience utilisateur.",
+                "job2_title": "Responsable UI/UX & Développeur Logiciel – Illumination Metaverse Group",
+                "job2_description": "Dirigé une équipe de conception et développement, créant des expériences numériques centrées sur l'utilisateur et améliorant les flux de travail techniques.",
+                "job3_title": "Technicien – Arkin Hotel / Kaya Arthemis Hotel",
+                "job3_description": "Fourni une maintenance technique et un support d'infrastructure informatique assurant des opérations numériques fluides.",
+                "job4_title": "Technicien – Karakas Prefabrik (Chypre)",
+                "job4_description": "Installé et configuré des systèmes de réseau dans des bâtiments préfabriqués, assurant des systèmes informatiques internes stables.",
+                "education_title": "Éducation",
+                "current_education": "Licence en Technologies de l'Information",
+                "previous_education": "Informatique Industrielle et Réseaux",
+                "high_school_diploma": "Diplôme d'études secondaires en Électronique Industrielle",
+
+                "contact_title": "Contactez-moi",
+                "contact_subtitle": "Collaborons et construisons quelque chose d'incroyable.",
+                "name_label": "Votre nom",
+                "email_label": "Votre email",
+                "subject_label": "Sujet",
+                "message_label": "Votre message",
+                "send_message": "Envoyer le message",
+                "email_contact": "Email",
+                "phone_contact": "Téléphone",
+                "location_contact": "Localisation",
+                "cyprus_location_full": "11 Mokaria, Yolo-Nord, RDC",
+                "copyright": "© 2025 ISAAC KUAKUA – Tous droits réservés."
+            },
+
+            es: {
+                "nav_home": "Inicio",
+                "nav_about": "Acerca de",
+                "nav_skills": "Habilidades",
+                "nav_projects": "Proyectos",
+                "nav_experience": "Experiencia",
+                "nav_contact": "Contacto",
+
+                "hero_title": "Hola, soy Isaac Kuakua",
+                "hero_subtitle": "Desarrollador apasionado y Diseñador UI/UX enfocado en la innovación y el rendimiento.",
+                "hero_description": "Actualmente Analista Programador Junior en We Market SARL (RDC), me especializo en desarrollo backend, diseño centrado en el usuario y optimización de plataformas digitales utilizando Laravel y frameworks modernos.",
+                "view_work": "Ver mi trabajo",
+                "contact_me": "Contáctame",
+
+                "about_title": "Sobre mí",
+                "who_is_isaac": "¿Quién es ISAAC KUAKUA?",
+                "about_description_1": "Soy KUAKUA MATALATALA Isaac — un desarrollador y diseñador UI/UX que combina experiencia técnica y creatividad para construir soluciones digitales que funcionan e inspiran. Actualmente trabajo como Analista Programador Junior en We Market SARL en la República Democrática del Congo, diseño y desarrollo plataformas web escalables, enfocándome en la experiencia del usuario y la eficiencia del backend.",
+                "about_description_2": "Anteriormente, lideré el desarrollo de UI/UX y software en Illumination Metaverse Group, donde di forma a productos digitales innovadores y guié a un equipo de desarrollo. Mi camino académico me llevó de Informática Industrial y Redes en Kinshasa a una Licenciatura en Tecnologías de la Información en la Universidad del Mediterráneo Oriental en Chipre.",
+                "languages_title": "Idiomas",
+                "french_language": "Francés – Nativo",
+                "english_language": "Inglés – Académico",
+                "lingala_language": "Lingala – Nacional",
+
+                "skills_title": "Habilidades técnicas",
+                "skills_subtitle": "Una mezcla de habilidades de desarrollo, diseño y análisis.",
+                "programming_languages": "Lenguajes de programación",
+                "frameworks_libraries": "Frameworks y bibliotecas",
+                "tools_technologies": "Herramientas y tecnologías",
+                "specializations": "Especializaciones",
+
+                "projects_title": "Proyectos destacados",
+                "projects_subtitle": "Algunos de mis últimos proyectos profesionales y académicos",
+                "cybersecurity_project": "Plataforma digital We Market",
+                "cybersecurity_description": "Desarrollo de una aplicación web escalable para la gestión de servicios digitales utilizando Laravel y MySQL.",
+                "ui_project": "Illumination Metaverse",
+                "ui_description": "Lideré el diseño UI/UX y frontend para una experiencia inspirada en el metaverso, centrándome en interfaces inmersivas.",
+                "iot_project": "Sistema de automatización IoT",
+                "iot_description": "Diseñé e implementé prototipos de automatización del hogar basados en IoT integrando Arduino y sistemas de sensores.",
+                "view_details": "Ver detalles",
+                "code_link": "Código",
+                "demo_link": "Demo",
+
+                "education_experience": "Experiencia y educación",
+                "job1_title": "Analista Programador Junior – We Market SARL (RDC)",
+                "job1_description": "Desarrollo de plataformas de servicios digitales utilizando PHP (Laravel) con un enfoque en la optimización del backend y la experiencia del usuario.",
+                "job2_title": "Líder UI/UX y Desarrollador de Software – Illumination Metaverse Group",
+                "job2_description": "Lideré un equipo de diseño y desarrollo, creando experiencias digitales centradas en el usuario y mejorando los flujos de trabajo técnicos.",
+                "job3_title": "Técnico – Arkin Hotel / Kaya Arthemis Hotel",
+                "job3_description": "Proporcioné mantenimiento técnico y soporte de infraestructura de TI asegurando operaciones digitales sin problemas.",
+                "job4_title": "Técnico – Karakas Prefabrik (Chipre)",
+                "job4_description": "Instalé y configuré sistemas de red en edificios prefabricados, asegurando sistemas de TI internos estables.",
+                "education_title": "Educación",
+                "current_education": "Licenciatura en Tecnologías de la Información",
+                "previous_education": "Informática Industrial y Redes",
+                "high_school_diploma": "Diploma de escuela secundaria en Electrónica Industrial",
+
+                "contact_title": "Contáctame",
+                "contact_subtitle": "Colaboremos y construyamos algo increíble.",
+                "name_label": "Tu nombre",
+                "email_label": "Tu correo electrónico",
+                "subject_label": "Asunto",
+                "message_label": "Tu mensaje",
+                "send_message": "Enviar mensaje",
+                "email_contact": "Correo electrónico",
+                "phone_contact": "Teléfono",
+                "location_contact": "Ubicación",
+                "cyprus_location_full": "11 Mokaria, Yolo-Nord, RDC",
+                "copyright": "© 2025 ISAAC KUAKUA – Todos los derechos reservados."
+            },
+
+            ln: {
+                "nav_home": "Liboso",
+                "nav_about": "Maloba",
+                "nav_skills": "Bokoki",
+                "nav_projects": "Misala",
+                "nav_experience": "Bokiti",
+                "nav_contact": "Kotuna",
+
+                "hero_title": "Mbote, ngai Isaac Kuakua",
+                "hero_subtitle": "Moto ya kosala na ba-ordinateur mpe kosala design ya UI/UX, na makasi na inovation mpe kosala malamu.",
+                "hero_description": "Sikoyo, ngai Analyst Programmeur Junior na We Market SARL (RDC), nazali na makasi na kosala ba-programme ya backend, kosala design malamu mpe kosala ba-plateforme numérique malamu na kozala na Laravel mpe ba-framework ya sika.",
+                "view_work": "Tala misala na ngai",
+                "contact_me": "Tuna ngai",
+
+                "about_title": "Maloba na ngai",
+                "who_is_isaac": "Nani ISAAC KUAKUA?",
+                "about_description_1": "Ngai KUAKUA MATALATALA Isaac — moto ya kosala na ba-ordinateur mpe kosala design ya UI/UX, nazali na makasi na kosala ba-solution numérique oyo ezali kosala malamu mpe kolakisa motema. Sikoyo, nazali Analyst Programmeur Junior na We Market SARL na Republique Democratique du Congo, nazali kosala mpe kobongisa ba-plateforme web oyo ekoki kozala na makasi, na kotala malamu expérience ya basali mpe kosala malamu ba-programme ya backend.",
+                "about_description_2": "Yambo, nazalaki mokonzi ya UI/UX mpe kosala ba-programme na Illumination Metaverse Group, wapi nazalaki kobongisa ba-produit numérique ya inovation mpe kokamba équipe ya basali. Makambo ya kelasi na ngai esalaki ngai kowuta na Informatique Industrielle & Réseaux na Kinshasa kino na Bachelor na Information Technology na Eastern Mediterranean University na Chypre.",
+                "languages_title": "Bato",
+                "french_language": "Falansé – Monoko ya liboso",
+                "english_language": "Lingelesé – Na kelasi",
+                "lingala_language": "Lingala – Monoko ya mboka",
+
+                "skills_title": "Bokoki ya technique",
+                "skills_subtitle": "Ba-bokoki ya kosala na ba-ordinateur, kosala design mpe koyeba kokataka.",
+                "programming_languages": "Ba-langage ya kosala programme",
+                "frameworks_libraries": "Ba-framework mpe ba-bibliothèque",
+                "tools_technologies": "Ba-outil mpe ba-technologie",
+                "specializations": "Ba-spécialisation",
+
+                "projects_title": "Ba-projet ya malamu",
+                "projects_subtitle": "Ba-misala na ngai ya sika mpe ya kelasi",
+                "cybersecurity_project": "Plateforme numérique We Market",
+                "cybersecurity_description": "Kobongisa ba-application web oyo ekoki kozala na makasi mpo na kosala gestion ya ba-service numérique na kozala na Laravel mpe MySQL.",
+                "ui_project": "Illumination Metaverse",
+                "ui_description": "Nazalaki mokonzi ya UI/UX mpe kosala design ya liboso mpo na expérience ya metaverse, na kotala malamu ba-interface oyo ezali kokamata motema.",
+                "iot_project": "Système ya automatisation IoT",
+                "iot_description": "Nabongisi mpe natindi ba-prototype ya automatisation ya ndako oyo ezali na IoT, na kosangisa Arduino mpe ba-système ya ba-capteur.",
+                "view_details": "Tala ba-détail",
+                "code_link": "Code",
+                "demo_link": "Démo",
+
+                "education_experience": "Bokiti mpe kelasi",
+                "job1_title": "Analyst Programmeur Junior – We Market SARL (RDC)",
+                "job1_description": "Kobongisa ba-plateforme ya ba-service numérique na kozala na PHP (Laravel) na kotala malamu kosala malamu ba-programme ya backend mpe expérience ya basali.",
+                "job2_title": "Mokonzi UI/UX & Moto ya kosala Programme – Illumination Metaverse Group",
+                "job2_description": "Nazalaki kokamba équipe ya kosala design mpe kosala ba-programme, kobongisa ba-expérience numérique oyo ezali kotala malamu basali mpe kosala malamu ba-travail ya technique.",
+                "job3_title": "Technicien – Arkin Hotel / Kaya Arthemis Hotel",
+                "job3_description": "Napesaki maintenance technique mpe support ya infrastructure ya IT mpo na kosala malamu ba-opération numérique.",
+                "job4_title": "Technicien – Karakas Prefabrik (Chypre)",
+                "job4_description": "Natelaki mpe nasalaki configuration ya ba-système réseau na ba-bâtiment préfabriqué, mpo na kosala malamu ba-système IT ya kati.",
+                "education_title": "Kelasi",
+                "current_education": "Bachelor na Information Technology",
+                "previous_education": "Informatique Industrielle & Réseaux",
+                "high_school_diploma": "Diplôme ya lycée na Électronique Industrielle",
+
+                "contact_title": "Tuna ngai",
+                "contact_subtitle": "Tosala elongo mpe tobongisa eloko moko ya malamu.",
+                "name_label": "Kombo na yo",
+                "email_label": "Email na yo",
+                "subject_label": "Sujet",
+                "message_label": "Lettre na yo",
+                "send_message": "Tinda lettre",
+                "email_contact": "Email",
+                "phone_contact": "Téléphone",
+                "location_contact": "Esika",
+                "cyprus_location_full": "11 Mokaria, Yolo-Nord, RDC",
+                "copyright": "© 2025 ISAAC KUAKUA – Ba-droit nyoso esungami."
             }
         };
 
-        // Language switching functionality
+        // 🔄 Language Switching
         document.querySelectorAll('.dropdown-item').forEach(item => {
-            item.addEventListener('click', function(e) {
+            item.addEventListener('click', function (e) {
                 e.preventDefault();
                 const lang = this.getAttribute('data-lang');
                 changeLanguage(lang);
                 document.getElementById('current-language').textContent = this.textContent;
+                localStorage.setItem('preferredLanguage', lang);
             });
         });
 
         function changeLanguage(lang) {
-            const elements = document.querySelectorAll('[data-translate]');
-            elements.forEach(element => {
-                const key = element.getAttribute('data-translate');
+            document.querySelectorAll('[data-translate]').forEach(el => {
+                const key = el.getAttribute('data-translate');
                 if (translations[lang] && translations[lang][key]) {
-                    element.textContent = translations[lang][key];
+                    el.textContent = translations[lang][key];
                 }
             });
-            localStorage.setItem('preferredLanguage', lang);
         }
 
-        // Check for saved language preference
-        const savedLanguage = localStorage.getItem('preferredLanguage') || 'en';
-        changeLanguage(savedLanguage);
-        document.getElementById('current-language').textContent = 
-            savedLanguage === 'en' ? 'English' : 
-            savedLanguage === 'es' ? 'Español' : 'Français';
+        // Set initial language based on browser preference or saved preference
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('preferredLanguage');
+            const browserLang = navigator.language.slice(0, 2);
+            const supported = ['en', 'fr', 'es', 'ln'];
+            const defaultLang = savedLang || (supported.includes(browserLang) ? browserLang : 'en');
+
+            changeLanguage(defaultLang);
+
+            // Update language selector text
+            document.getElementById('current-language').textContent =
+                defaultLang === 'fr' ? 'Français' :
+                    defaultLang === 'es' ? 'Español' :
+                        defaultLang === 'ln' ? 'Lingala' : 'English';
+        });
+
+
+        (function () {
+            emailjs.init("g-FoznCp19__LlITb"); // Your actual EmailJS public key
+        })();
+
+        document.getElementById("contactForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            // 🕒 Get current local date and time
+            const now = new Date();
+            const currentTime = now.toLocaleString();
+         
+
+            const params = {
+                name: document.getElementById("name").value,
+                email: document.getElementById("email").value,
+                subject: document.getElementById("subject").value,
+                message: document.getElementById("message").value,
+                time: currentTime
+            };
+
+            emailjs.send("Porfolio_KIM", "template_ryfaczr", params)
+                .then(function (response) {
+                    alert("✅ Message sent successfully!");
+                    e.target.reset();
+                }, function (error) {
+                    alert("❌ Failed to send message. Please try again later.");
+                    console.error("EmailJS Error:", error);
+                });
+        });
     </script>
 </body>
+
 </html>
