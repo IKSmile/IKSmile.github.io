@@ -1082,13 +1082,18 @@
     </div>
 
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top ">
         <div class="container">
             <a class="navbar-brand" href="#">ISAAC KUAKUA</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+
+            <!-- Offcanvas Toggler (visible on mobile) -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu"
+                aria-controls="mobileMenu">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
+
+            <!-- Regular Navbar (visible on large screens) -->
+            <div class="collapse navbar-collapse d-none d-lg-block" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="#home" data-translate="nav_home">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="#about" data-translate="nav_about">About</a></li>
@@ -1103,6 +1108,29 @@
             </div>
         </div>
     </nav>
+
+    <!-- Offcanvas Menu (for mobile) -->
+    <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="mobileMenu" aria-labelledby="mobileMenuLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="mobileMenuLabel">ISAAC KUAKUA</h5>
+            <button id="close-btn" type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="#home" data-translate="nav_home">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#about" data-translate="nav_about">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="#skills" data-translate="nav_skills">Skills</a></li>
+                <li class="nav-item"><a class="nav-link" href="#projects" data-translate="nav_projects">Projects</a>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="#experience"
+                        data-translate="nav_experience">Experience</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contact" data-translate="nav_contact">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
 
     <!-- Hero Section -->
     <section id="home" class="hero-section">
@@ -1764,28 +1792,54 @@
             });
         });
 
-        // Dark Mode Toggle
-        document.getElementById('darkModeToggle').addEventListener('click', function () {
-            document.body.classList.toggle('dark-mode');
-            const icon = this.querySelector('i');
-            if (document.body.classList.contains('dark-mode')) {
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const icon = darkModeToggle.querySelector('i');
+        const offcanvas = document.getElementById('mobileMenu');
+        const navbar = document.querySelector('.navbar');
+        const closeBtn = document.getElementById('close-btn');
+
+        // Function to apply theme based on mode
+        function applyTheme(isDark) {
+            if (isDark) {
+                document.body.classList.add('dark-mode');
                 icon.classList.remove('bi-moon');
                 icon.classList.add('bi-sun');
                 localStorage.setItem('darkMode', 'enabled');
+
+                // Offcanvas and navbar dark theme
+                offcanvas.classList.remove('text-bg-light');
+                offcanvas.classList.add('text-bg-dark');
+                navbar.classList.remove('navbar-light', 'bg-light');
+                navbar.classList.add('navbar-dark',);
+                closeBtn.classList.add('btn-close-white');
             } else {
+                document.body.classList.remove('dark-mode');
                 icon.classList.remove('bi-sun');
                 icon.classList.add('bi-moon');
                 localStorage.setItem('darkMode', 'disabled');
-            }
-        });
 
-        // Check for saved dark mode preference
-        if (localStorage.getItem('darkMode') === 'enabled') {
-            document.body.classList.add('dark-mode');
-            document.getElementById('darkModeToggle').querySelector('i').classList.remove('bi-moon');
-            document.getElementById('darkModeToggle').querySelector('i').classList.add('bi-sun');
+                // Offcanvas and navbar light theme
+                offcanvas.classList.remove('text-bg-dark');
+                offcanvas.classList.add('text-bg-light');
+                navbar.classList.remove('navbar-dark', 'bg-dark');
+                navbar.classList.add('navbar-dark');
+                closeBtn.classList.remove('btn-close-white');
+            }
         }
 
+        // Toggle button click event
+        darkModeToggle.addEventListener('click', function () {
+            const isDark = !document.body.classList.contains('dark-mode');
+            applyTheme(isDark);
+        });
+
+        // On page load: apply saved preference
+        const savedMode = localStorage.getItem('darkMode');
+        if (savedMode === 'enabled') {
+            applyTheme(true);
+        } else {
+            applyTheme(false);
+        }
         // Animate progress bars when they come into view
         const progressBars = document.querySelectorAll('.progress-bar');
 
@@ -2135,7 +2189,7 @@
             // 🕒 Get current local date and time
             const now = new Date();
             const currentTime = now.toLocaleString();
-         
+
 
             const params = {
                 name: document.getElementById("name").value,
