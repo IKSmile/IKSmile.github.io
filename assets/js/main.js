@@ -173,7 +173,7 @@
                 "email_contact": "Email",
                 "phone_contact": "Phone",
                 "location_contact": "Location",
-                "cyprus_location_full": "11 Mokaria, Yolo-Nord, RDC",
+                "cyprus_location_full":"Kinshasa, RDC",
                 "copyright": "© 2025 ISAAC KUAKUA – All Rights Reserved."
             },
 
@@ -199,6 +199,7 @@
                 "french_language": "Français – Natif",
                 "english_language": "Anglais – Académique",
                 "lingala_language": "Lingala – National",
+                "kikongo_language": "Kikongo – National",
 
                 "skills_title": "Compétences techniques",
                 "skills_subtitle": "Un mélange de compétences en développement, design et analyse.",
@@ -243,7 +244,7 @@
                 "email_contact": "Email",
                 "phone_contact": "Téléphone",
                 "location_contact": "Localisation",
-                "cyprus_location_full": "11 Mokaria, Yolo-Nord, RDC",
+                "cyprus_location_full": "Kinshasa, RDC",
                 "copyright": "© 2025 ISAAC KUAKUA – Tous droits réservés."
             },
 
@@ -269,6 +270,7 @@
                 "french_language": "Francés – Nativo",
                 "english_language": "Inglés – Académico",
                 "lingala_language": "Lingala – Nacional",
+                "kikongo_language": "Kikongo – Nacional",
 
                 "skills_title": "Habilidades técnicas",
                 "skills_subtitle": "Una mezcla de habilidades de desarrollo, diseño y análisis.",
@@ -313,7 +315,7 @@
                 "email_contact": "Correo electrónico",
                 "phone_contact": "Teléfono",
                 "location_contact": "Ubicación",
-                "cyprus_location_full": "11 Mokaria, Yolo-Nord, RDC",
+                "cyprus_location_full": "Kinshasa, RDC",
                 "copyright": "© 2025 ISAAC KUAKUA – Todos los derechos reservados."
             },
 
@@ -339,6 +341,7 @@
                 "french_language": "Falansé – Monoko ya liboso",
                 "english_language": "Lingelesé – Na kelasi",
                 "lingala_language": "Lingala – Monoko ya mboka",
+                "kikongo_language": "Kikongo – Monoko ya mboka",
 
                 "skills_title": "Bokoki ya technique",
                 "skills_subtitle": "Ba-bokoki ya kosala na ba-ordinateur, kosala design mpe koyeba kokataka.",
@@ -383,7 +386,7 @@
                 "email_contact": "Email",
                 "phone_contact": "Téléphone",
                 "location_contact": "Esika",
-                "cyprus_location_full": "11 Mokaria, Yolo-Nord, RDC",
+                "cyprus_location_full": "Kinshasa, RDC",
                 "copyright": "© 2025 ISAAC KUAKUA – Ba-droit nyoso esungami."
             }
         };
