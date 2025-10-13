@@ -129,6 +129,7 @@
                 "french_language": "French – Native",
                 "english_language": "English – Academic",
                 "lingala_language": "Lingala – National",
+                "kikongo_language": "Kikongo – National",
 
                 "skills_title": "Technical Skills",
                 "skills_subtitle": "A mix of development, design, and analytical skills.",
