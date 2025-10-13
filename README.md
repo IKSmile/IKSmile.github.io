@@ -7,7 +7,7 @@ It showcases professional experience, technical skills, projects, and contact in
 
 ## 🖥️ Demo
 
-👉 **Live Preview:** [https://isaackuakua.pro](#)  
+👉 **Live Preview:** [https://www.isaackuakua.pro](#)  
 ---
 
 ## 📁 Project Structure
