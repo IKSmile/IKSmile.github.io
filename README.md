@@ -1,176 +1,212 @@
 # 🌐 Isaac Kuakua – Portfolio Website
 
-This is the official personal portfolio website of **Isaac Kuakua**, a **Junior Analyst Programmer, Developer, and UI/UX Designer**.  
-It showcases professional experience, technical skills, projects, and contact information — all designed with a modern, responsive layout.
+![Status](https://img.shields.io/badge/status-live-success?style=for-the-badge)
+![Made with](https://img.shields.io/badge/Made%20with-Bootstrap%205-blue?style=for-the-badge\&logo=bootstrap)
+![License](https://img.shields.io/badge/license-MIT-green?style=for-the-badge)
 
 ---
 
-## 🖥️ Demo
+## 🚀 Overview
 
-👉 **Live Preview:** [https://iksmile.github.io](#)  
+Welcome to the official **portfolio website** of **Isaac Kuakua** —
+💻 *IT Engineer • Full Stack Developer • UI/UX Designer • Creative Director*
+
+This project showcases:
+
+* 💼 Professional experience
+* 🧠 Technical expertise
+* 🎨 Design capabilities
+* 📬 Contact & collaboration channels
+
+All wrapped in a **modern, responsive, and interactive UI**.
+
+---
+
+## 🖥️ Live Demo
+
+👉 **Visit Portfolio:** https://iksmile.github.io
+
+---
+
+## ✨ Key Features
+
+* 📱 **Fully Responsive Design** (Mobile-first with Bootstrap 5)
+* 🌙 **Dark / Light Mode Toggle**
+* 🌍 **Multi-language Support** (EN 🇬🇧 | FR 🇫🇷 | ES 🇪🇸 | Lingala 🇨🇩)
+* 🎬 **Smooth Animations (AOS)**
+* 📊 **Interactive Skill Bars**
+* 📩 **Contact Form (EmailJS Ready)**
+* 📂 **Project Showcase with visuals & links**
+* 📌 **Sticky Navigation + Offcanvas Menu**
+* ⬆️ **Back-to-Top Button**
+
+---
+
+## 🧠 Tech Stack
+
+### ⚙️ Core Technologies
+
+| Category     | Tools                              |
+| ------------ | ---------------------------------- |
+| 🎨 Frontend  | Bootstrap 5, HTML5, CSS3           |
+| ⚡ JavaScript | ES6 (Vanilla JS)                   |
+| ✨ Animations | AOS Library                        |
+| 📧 Email     | EmailJS                            |
+| 🔤 Fonts     | Google Fonts (Poppins, Montserrat) |
+| 🎯 Icons     | Bootstrap Icons                    |
+
 ---
 
 ## 📁 Project Structure
 
-
+```
 root/
 │
 ├── assets/
-│ ├── images/ # Profile, project, and gallery images
-│ ├── js/
-│ │ └── main.js # Custom JavaScript (interactivity, translations, animations)
-│ └── styles/
-│ └── main.css # Custom CSS styles
+│   ├── images/        # Images & assets
+│   ├── js/
+│   │   └── main.js    # Logic, animations, translations
+│   └── styles/
+│       └── main.css   # Custom styling
 │
-├── index.html # Main HTML file (Portfolio page)
-└── README.md # Project documentation
-
-
-
----
-
-## 🚀 Features
-
-✅ **Responsive Design** – Fully mobile-friendly layout using **Bootstrap 5**  
-✅ **Dark Mode Toggle** – Switch seamlessly between light and dark themes  
-✅ **Language Selector** – Supports **English**, **French**, **Spanish**, and **Lingala**  
-✅ **Animated Sections** – Smooth scroll animations using **AOS (Animate On Scroll)**  
-✅ **Back to Top Button** – Easy navigation for long pages  
-✅ **Modern UI/UX** – Clean, minimal, and professional interface  
-✅ **Contact Form Integration** – Ready to connect with **EmailJS** for real-time messaging  
-✅ **Offcanvas Menu** – Mobile-friendly navigation drawer  
-✅ **Interactive Skill Bars** – Visual representation of technical skill levels  
+├── index.html         # Main portfolio page
+└── README.md          # Documentation
+```
 
 ---
 
-## 🧠 Technologies Used
+## 🧩 Sections Breakdown
 
-| Category | Technologies |
-|-----------|--------------|
-| **Frontend Framework** | [Bootstrap 5](https://getbootstrap.com/) |
-| **Icons** | [Bootstrap Icons](https://icons.getbootstrap.com/) |
-| **Fonts** | [Google Fonts: Poppins, Montserrat](https://fonts.google.com/) |
-| **Animations** | [AOS (Animate On Scroll)](https://michalsnik.github.io/aos/) |
-| **Email Service** | [EmailJS](https://www.emailjs.com/) |
-| **Scripting** | Vanilla JavaScript (ES6) |
-| **Styling** | Custom CSS with Bootstrap utilities |
+### 🏠 Hero
 
----
+Professional introduction with CTA buttons
 
-## 📷 Sections Overview
+### 👨‍💻 About
 
-### 🏠 Hero Section
-Introduces **Isaac Kuakua** with a professional profile image, title, and quick action buttons.  
-
-### 👨‍💻 About Me
-Showcases education, professional background, and language proficiencies with a visual photo grid.  
+Education, background, and personal profile
 
 ### ⚙️ Skills
-Highlights key **programming languages**, **frameworks**, **tools**, and **specializations** with animated skill bars.  
 
-### 🧾 Experience & Education
-Displays a **timeline** of professional experience and academic achievements.  
+Tech stack with animated indicators
+
+### 📜 Experience & Education
+
+Timeline of career and academic journey
 
 ### 💼 Projects
-Features selected professional and academic projects with images, tools used, and links to live demos.  
+
+Highlighted works with previews & technologies
 
 ### 📬 Contact
-Includes a **functional contact form**, **email**, **phone number**, and **location details**.  
 
-### ⚫ Footer
-Links to social profiles (LinkedIn, GitHub, Twitter, Instagram).  
+Interactive form + personal contact details
 
 ---
 
-## 🛠️ Setup Instructions
+## 🛠️ Local Setup
 
-To run this project locally:
+```bash
+# Clone repository
+git clone https://github.com/IKSmile/IKSmile.github.io.git
 
-1. **Clone this repository**
-   ```bash
-   git clone https://github.com/IKSmile/IKSmile.github.io.git
-Navigate into the project folder
+# Navigate into folder
+cd IKSmile.github.io
 
-bash
-Copy code
-cd isaac-kuakua-portfolio
-Open the HTML file in your browser
-
-bash
-Copy code
+# Open in browser
 open index.html
-or simply double-click on index.html.
+```
 
-✉️ Contact Integration (EmailJS)
-The contact form is set up with EmailJS.
-To enable it:
+---
 
-Create a free EmailJS account
+## ✉️ Email Integration (EmailJS)
 
-Obtain:
+To activate the contact form:
 
-SERVICE_ID
+1. Create an account → https://www.emailjs.com/
 
-TEMPLATE_ID
+2. Get your credentials:
 
-PUBLIC_KEY
+   * SERVICE_ID
+   * TEMPLATE_ID
+   * PUBLIC_KEY
 
-Configure them inside your assets/js/main.js file.
+3. Configure inside `main.js`:
 
-Example:
-
-javascript
-Copy code
+```javascript
 emailjs.init("YOUR_PUBLIC_KEY");
-emailjs.sendForm("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", form);
-🎨 Customization
-You can easily modify:
 
-Colors and fonts → in assets/styles/main.css
+emailjs.sendForm(
+  "YOUR_SERVICE_ID",
+  "YOUR_TEMPLATE_ID",
+  form
+);
+```
 
-Text content → directly in index.html
+---
 
-Images → in assets/images/
+## 🎨 Customization
 
-Language translations → inside your JavaScript translation module (if implemented)
+Easily customize the project:
 
-🌍 Multi-Language Support
-Supported Languages:
+* 🎨 Colors & themes → `assets/styles/main.css`
+* 📝 Content → `index.html`
+* 🖼️ Images → `assets/images/`
+* 🌍 Translations → inside `main.js`
 
-English 🇬🇧
+---
 
-French 🇫🇷
+## 🌍 Multi-language System
 
-Spanish 🇪🇸
+Supports dynamic translation using `data-translate` attributes:
 
-Lingala 🇨🇩
+* 🇬🇧 English
+* 🇫🇷 French
+* 🇪🇸 Spanish
+* 🇨🇩 Lingala
 
-Switching languages updates all text marked with data-translate attributes dynamically.
+---
 
-🧩 Dependencies (CDN)
-All external dependencies are loaded via CDN for easy deployment:
+## 🧩 Dependencies (CDN)
 
-Bootstrap 5
+* Bootstrap 5
+* Bootstrap Icons
+* AOS (Animate On Scroll)
+* Google Fonts
+* EmailJS
 
-Bootstrap Icons
+---
 
-AOS Animation Library
+## 📈 Future Improvements
 
-Google Fonts
+* 🔥 Blog section integration
+* ⚡ Performance optimization (Lighthouse 100)
+* 📊 Analytics dashboard
+* 🧠 AI chatbot assistant
 
-EmailJS
+---
 
-📄 License
-This project is open-source and free to use under the MIT License.
+## 📄 License
 
-👤 Author
-Isaac Kuakua
-🎓 Junior Analyst Programmer & UI/UX Designer
-📧 kuakuaisa@gmail.com
-📍 Kinshasa, DRC
-🔗 [LinkedIn Profile](https://linkedin.com/in/isaac-kuakua-3b2252324)
+This project is licensed under the **MIT License** — free to use and modify.
 
-“Code with purpose. Design with empathy.”
-— Isaac Kuakua
+---
 
+## 👤 Author
 
+**Isaac Kuakua**
+💻 IT Engineer | Full Stack Developer | UI/UX Designer
+
+📍 Kinshasa, Democratic Republic of Congo 🇨🇩
+📧 [isaackuakua02@gmail.com](mailto:isaackuakua02@gmail.com)
+
+🔗 LinkedIn: https://linkedin.com/in/isaac-kuakua-3b2252324
+🔗 GitHub: https://github.com/IKSmile
+
+---
+
+## ⭐ Quote
+
+> *"Code with purpose. Design with empathy."*
+> — Isaac Kuakua
+
+---
