@@ -7,7 +7,7 @@ It showcases professional experience, technical skills, projects, and contact in
 
 ## 🖥️ Demo
 
-👉 **Live Preview:** [https://www.isaackuakua.pro](#)  
+👉 **Live Preview:** [https://iksmile.github.io](#)  
 ---
 
 ## 📁 Project Structure
